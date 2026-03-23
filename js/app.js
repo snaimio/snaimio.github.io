@@ -18,11 +18,9 @@ function initTheme() {
     const body = document.body;
     const icon = btn.querySelector('i');
 
-    const saved = localStorage.getItem('theme');
-    if (saved) {
-        body.className = saved;
-        icon.className = saved === 'light-mode' ? 'fas fa-moon' : 'fas fa-circle-half-stroke';
-    }
+    const saved = localStorage.getItem('theme') || 'light-mode';
+    body.className = saved;
+    icon.className = saved === 'light-mode' ? 'fas fa-moon' : 'fas fa-circle-half-stroke';
 
     btn.addEventListener('click', () => {
         const isLight = body.classList.contains('light-mode');
