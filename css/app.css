@@ -67,7 +67,9 @@ body.light-mode #navbar.scrolled {
     font-size: 1.2rem;
 }
 
-.logo span { color: #555; }
+.logo span { 
+    color: #555; 
+}
 
 .nav-links {
     display: flex;
@@ -89,7 +91,9 @@ body.light-mode #navbar.scrolled {
 
 .nav-links a:hover,
 .nav-links a.active,
-#theme-toggle:hover { opacity: 1; }
+#theme-toggle:hover { 
+    opacity: 1; 
+}
 
 .mobile-menu-btn {
     display: none;
@@ -114,9 +118,14 @@ body.light-mode #navbar.scrolled {
     z-index: 999;
 }
 
-.mobile-menu.active { display: flex; }
+.mobile-menu.active { 
+    display: flex; 
+}
 
-body.light-mode .mobile-menu { background: #f5f5f5; border-color: #eee; }
+body.light-mode .mobile-menu { 
+    background: #f5f5f5; 
+    border-color: #eee; 
+}
 
 .mobile-menu a {
     font-size: 1rem;
@@ -125,7 +134,9 @@ body.light-mode .mobile-menu { background: #f5f5f5; border-color: #eee; }
     transition: 0.3s;
 }
 
-.mobile-menu a:hover { opacity: 1; }
+.mobile-menu a:hover { 
+    opacity: 1; 
+}
 
 /* --- Hero --- */
 .hero {
@@ -138,7 +149,9 @@ body.light-mode .mobile-menu { background: #f5f5f5; border-color: #eee; }
     position: relative;
 }
 
-.hero-content { max-width: 900px; }
+.hero-content { 
+    max-width: 900px; 
+}
 
 .greeting {
     display: block;
@@ -164,7 +177,9 @@ body.light-mode .mobile-menu { background: #f5f5f5; border-color: #eee; }
     color: #222;
 }
 
-body.light-mode .display-text span { color: #bbb; }
+body.light-mode .display-text span { 
+    color: #bbb; 
+}
 
 .dynamic-text {
     font-size: 1.3rem;
@@ -215,9 +230,15 @@ body.light-mode .display-text span { color: #bbb; }
     transition: 0.3s;
 }
 
-.btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+.btn-primary:hover { 
+    opacity: 0.85; 
+    transform: translateY(-2px); 
+}
 
-body.light-mode .btn-primary { background: #000; color: #fff; }
+body.light-mode .btn-primary { 
+    background: #000; 
+    color: #fff; 
+}
 
 .btn-secondary {
     display: inline-flex;
@@ -234,15 +255,28 @@ body.light-mode .btn-primary { background: #000; color: #fff; }
     transition: 0.3s;
 }
 
-.btn-secondary:hover { border-color: #fff; transform: translateY(-2px); }
+.btn-secondary:hover { 
+    border-color: #fff; 
+    transform: translateY(-2px); 
+}
 
-body.light-mode .btn-secondary { border-color: #ccc; }
-body.light-mode .btn-secondary:hover { border-color: #000; }
+body.light-mode .btn-secondary { 
+    border-color: #ccc; 
+}
+body.light-mode .btn-secondary:hover { 
+    border-color: #000; 
+}
 
-.btn-block { width: 100%; justify-content: center; }
+.btn-block { 
+    width: 100%; 
+    justify-content: center; 
+}
 
 /* --- Hero Stats --- */
-.hero-stats { display: flex; gap: 50px; }
+.hero-stats { 
+    display: flex; 
+    gap: 50px; 
+}
 
 .stat-number {
     display: block;
@@ -306,7 +340,10 @@ body.light-mode .btn-secondary:hover { border-color: #000; }
 }
 
 /* --- Filter Tabs --- */
-.filter-tabs { display: flex; align-items: center; }
+.filter-tabs { 
+    display: flex; 
+    align-items: center; 
+}
 
 .filter-btn {
     background: none;
@@ -320,7 +357,9 @@ body.light-mode .btn-secondary:hover { border-color: #000; }
     transition: 0.3s;
 }
 
-.filter-btn.active, .filter-btn:hover { opacity: 1; }
+.filter-btn.active, .filter-btn:hover { 
+    opacity: 1; 
+}
 
 /* --- Project Grid --- */
 .project-grid {
@@ -345,9 +384,13 @@ body.light-mode .project-card {
     border-color: #eee; 
 }
 
-.project-card:hover { transform: scale(0.98); }
+.project-card:hover { 
+    transform: scale(0.98); 
+}
 
-.project-card.featured { grid-column: span 2; }
+.project-card.featured { 
+    grid-column: span 2; 
+}
 
 /* --- Card Image --- */
 .card-image {
@@ -357,7 +400,9 @@ body.light-mode .project-card {
     background: #111;
 }
 
-.project-card.featured .card-image { height: 280px; }
+.project-card.featured .card-image { 
+    height: 280px; 
+}
 
 .card-image img {
     width: 100%;
@@ -367,7 +412,9 @@ body.light-mode .project-card {
     transition: transform 0.5s ease;
 }
 
-.project-card:hover .card-image img { transform: scale(1.04); }
+.project-card:hover .card-image img { 
+    transform: scale(1.04); 
+}
 
 /* Fallback gradients */
 .bg-1 { background: linear-gradient(135deg, #0a2e1a, #165c32); }
@@ -522,7 +569,9 @@ body.light-mode .project-tech span { border-color: #ddd; }
     background: #222;
 }
 
-body.light-mode .journey-timeline::before { background: #ddd; }
+body.light-mode .journey-timeline::before { 
+    background: #ddd; 
+}
 
 .timeline-item {
     display: flex;
@@ -539,7 +588,9 @@ body.light-mode .journey-timeline::before { background: #ddd; }
     margin-top: 4px;
 }
 
-body.light-mode .timeline-dot { background: #000; }
+body.light-mode .timeline-dot { 
+    background: #000; 
+}
 
 .timeline-year {
     display: block;
@@ -572,7 +623,9 @@ body.light-mode .timeline-dot { background: #000; }
     opacity: 0.5;
 }
 
-body.light-mode .personal-quote { border-color: #ccc; }
+body.light-mode .personal-quote { 
+    border-color: #ccc; 
+}
 
 /* Skills */
 .skills-showcase h3 {
@@ -582,7 +635,11 @@ body.light-mode .personal-quote { border-color: #ccc; }
     margin-bottom: 28px;
 }
 
-.skills-grid { display: flex; flex-direction: column; gap: 16px; }
+.skills-grid { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px; 
+}
 
 .skill-category {
     background: #0a0a0a;
@@ -616,7 +673,10 @@ body.light-mode .skill-category:hover {
     margin-bottom: 12px;
 }
 
-.skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.skill-tags { 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 6px; }
 
 .skill-tags span {
     font-size: 0.78rem;
@@ -626,10 +686,13 @@ body.light-mode .skill-category:hover {
     border-radius: 100px;
 }
 
-body.light-mode .skill-tags span { border-color: #ddd; }
+body.light-mode .skill-tags span { 
+    border-color: #ddd; 
+}
 
-/* --- Want To --- */
-.want-to { padding-top: 0; }
+.want-to { 
+    padding-top: 0; 
+}
 
 .want-to h2 {
     font-size: clamp(2rem, 5vw, 3rem);
@@ -796,7 +859,8 @@ body.light-mode .social-link {
 }
 body.light-mode .social-link:hover { 
     
-    border-color: #000; }
+    border-color: #000; 
+}
 
 .contact-form { 
     display: flex; 
