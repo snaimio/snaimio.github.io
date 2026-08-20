@@ -1,417 +1,723 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/app.css">
-  <title>Sheikh Naim | Mobile Web Developer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sheikh Naim — Mobile App Developer</title>
+<meta name="description" content="Sheikh Naim — Mobile app developer in Toronto building native iOS (Swift/SwiftUI) and Android (Kotlin) apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: #F7F8FA;
+        color: #14171C;
+        font-family: 'IBM Plex Sans', sans-serif;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    ::selection {
+        background: #2F6FED;
+        color: #ffffff;
+    }
+
+    :focus-visible {
+        outline: 2px solid #2F6FED;
+        outline-offset: 3px;
+    }
+
+    .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 0 28px;
+    }
+
+    /* ---------- Nav ---------- */
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(247, 248, 250, 0.88);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid #E3E6EB;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 16px 28px;
+    }
+
+    .logo {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo .dot {
+        width: 8px;
+        height: 8px;
+        background: #2F6FED;
+        border-radius: 2px;
+        display: inline-block;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .nav-links a {
+        color: #5B6270;
+        transition: color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+        color: #14171C;
+    }
+
+    .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12.5px;
+        color: #14171C;
+        border: 1px solid #14171C;
+        padding: 7px 14px;
+        border-radius: 6px;
+        transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-cta:hover {
+        background: #14171C;
+        color: #ffffff;
+    }
+
+    @media (max-width: 640px) {
+        .nav-links { display: none; }
+    }
+
+    /* ---------- Eyebrow ---------- */
+
+    .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #5B6270;
+        margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #2F6FED;
+        display: inline-block;
+    }
+
+    /* ---------- Hero ---------- */
+
+    .hero {
+        padding: 88px 0 64px;
+        border-bottom: 1px solid #E3E6EB;
+    }
+
+    .hero .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12.5px;
+        color: #1E9E5A;
+        background: #EAF7EF;
+        border: 1px solid #CDEBD9;
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-bottom: 24px;
+    }
+
+    .hero .status .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #1E9E5A;
+    }
+
+    .hero h1 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        max-width: 12ch;
+        margin-bottom: 20px;
+    }
+
+    .hero p.lede {
+        font-size: 17px;
+        color: #5B6270;
+        max-width: 52ch;
+        margin-bottom: 32px;
+    }
+
+    .hero .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 44px;
+    }
+
+    .btn {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 13px;
+        padding: 12px 20px;
+        border-radius: 6px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-primary {
+        background: #14171C;
+        color: #ffffff;
+    }
+
+    .btn-primary:hover {
+        background: #2F6FED;
+    }
+
+    .btn-secondary {
+        border: 1px solid #E3E6EB;
+        color: #14171C;
+        background: #ffffff;
+    }
+
+    .btn-secondary:hover {
+        border-color: #14171C;
+    }
+
+    .stat-row {
+        display: flex;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .stat b {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 22px;
+        display: block;
+    }
+
+    .stat span {
+        font-size: 13px;
+        color: #5B6270;
+    }
+
+    /* ---------- Sections ---------- */
+
+    section {
+        padding: 72px 0;
+        border-bottom: 1px solid #E3E6EB;
+    }
+
+    .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 36px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .section-head h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 600;
+        font-size: 26px;
+    }
+
+    .section-head .note {
+        font-size: 13.5px;
+        color: #5B6270;
+        font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* ---------- Projects ---------- */
+
+    .project-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .project {
+        display: grid;
+        grid-template-columns: 130px 1fr;
+        gap: 24px;
+        padding: 26px 0;
+        border-top: 1px solid #E3E6EB;
+    }
+
+    .project:first-child {
+        border-top: none;
+    }
+
+    .platform-tag {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        height: fit-content;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #E3E6EB;
+        background: #ffffff;
+        white-space: nowrap;
+    }
+
+    .platform-tag .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+    }
+
+    .tag-ios .dot { background: #2F6FED; }
+    .tag-android .dot { background: #1E9E5A; }
+    .tag-web .dot { background: #8A8F98; }
+
+    .project h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+
+    .project p {
+        font-size: 14.5px;
+        color: #5B6270;
+        max-width: 60ch;
+        margin-bottom: 12px;
+    }
+
+    .project .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .project .stack span {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11.5px;
+        color: #5B6270;
+        background: #EEF0F3;
+        padding: 3px 8px;
+        border-radius: 4px;
+    }
+
+    .project .links {
+        display: flex;
+        gap: 16px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .project .links a {
+        color: #2F6FED;
+        border-bottom: 1px solid transparent;
+    }
+
+    .project .links a:hover {
+        border-bottom-color: #2F6FED;
+    }
+
+    @media (max-width: 600px) {
+        .project {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ---------- About ---------- */
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 56px;
+    }
+
+    .about-grid p {
+        color: #5B6270;
+        font-size: 15px;
+        margin-bottom: 16px;
+        max-width: 56ch;
+    }
+
+    .timeline-row {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        gap: 16px;
+        padding: 16px 0;
+        border-top: 1px solid #E3E6EB;
+    }
+
+    .timeline-row:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+
+    .timeline-row .when {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 12px;
+        color: #5B6270;
+        padding-top: 2px;
+    }
+
+    .timeline-row h4 {
+        font-size: 14.5px;
+        font-weight: 600;
+        margin-bottom: 4px;
+    }
+
+    .timeline-row p {
+        font-size: 13.5px;
+        color: #5B6270;
+        margin-bottom: 0;
+    }
+
+    @media (max-width: 700px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ---------- Skills ---------- */
+
+    .skill-groups {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-top: 36px;
+    }
+
+    .skill-groups h5 {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 11.5px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #5B6270;
+        margin-bottom: 12px;
+    }
+
+    .skill-groups ul {
+        list-style: none;
+        font-size: 14px;
+    }
+
+    .skill-groups li {
+        padding: 5px 0;
+        border-top: 1px solid #E3E6EB;
+    }
+
+    .skill-groups li:first-child {
+        border-top: none;
+    }
+
+    @media (max-width: 700px) {
+        .skill-groups {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    /* ---------- Contact ---------- */
+
+    #contact {
+        border-bottom: none;
+        padding-bottom: 100px;
+    }
+
+    .contact-card {
+        background: #14171C;
+        color: #ffffff;
+        border-radius: 14px;
+        padding: 48px;
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 32px;
+    }
+
+    .contact-card h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 14px;
+        max-width: 14ch;
+    }
+
+    .contact-card p {
+        color: #A6ACB8;
+        font-size: 14.5px;
+        max-width: 40ch;
+        margin-bottom: 24px;
+    }
+
+    .contact-card .btn-primary {
+        background: #ffffff;
+        color: #14171C;
+    }
+
+    .contact-card .btn-primary:hover {
+        background: #2F6FED;
+        color: #ffffff;
+    }
+
+    .contact-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        justify-content: center;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 13.5px;
+    }
+
+    .contact-links a {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #2B2F37;
+        padding-bottom: 12px;
+        color: #ffffff;
+    }
+
+    .contact-links a span.arrow {
+        color: #5B6270;
+        transition: transform 0.15s ease, color 0.15s ease;
+    }
+
+    .contact-links a:hover span.arrow {
+        color: #2F6FED;
+        transform: translateX(3px);
+    }
+
+    @media (max-width: 700px) {
+        .contact-card {
+            grid-template-columns: 1fr;
+            padding: 32px 24px;
+        }
+    }
+
+    footer {
+        padding: 28px;
+        text-align: center;
+        font-size: 12.5px;
+        font-family: 'IBM Plex Mono', monospace;
+        color: #5B6270;
+    }
+</style>
 </head>
-<body class="light-mode">
-  
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <div class="logo">SheikhNaim<span>.dev</span></div>
-      <div class="nav-links">
-        <a href="#home" class="active">Home</a>
-        <a href="#work">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <button id="theme-toggle"><i class="fas fa-circle-half-stroke"></i></button>
-      </div>
-      <button class="mobile-menu-btn"><i class="fas fa-bars"></i></button>
-    </div>
-  </nav>
+<body>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <a href="#home">Home</a>
-    <a href="#work">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-
-  <main>
-
-    <!-- ======== HERO ======== -->
-    <section id="home" class="hero">
-      <div class="hero-content">
-        <span class="greeting">👋 Hello, I'm</span>
-        <h1 class="display-text">Sheikh<span>Naim</span></h1>
-        <p class="dynamic-text">I build <span class="rotating-text">mobile experiences</span></p>
-        <p class="tagline">Mobile Developer &amp; UI Designer &mdash; Toronto, ON</p>
-        <p class="hero-description">
-          I blend Kotlin, Swift, and Figma to craft apps people love to use.
-          Graduated from triOS College's Mobile Web Developer program with a real
-          internship, real projects, and a passion for clean mobile UI.
-        </p>
-        <div class="hero-cta">
-          <a href="#work" class="btn-primary">View My Work</a>
-          <a href="assets/Sheikh_Naim_Resume.pdf" class="btn-secondary" download>
-            <i class="fas fa-download"></i> Resume
-          </a>
+<header>
+    <nav>
+        <a href="#home" class="logo"><span class="dot"></span>Sheikh Naim</a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
         </div>
-        <div class="hero-stats">
-          <div class="stat">
-            <span class="stat-number">5+</span>
-            <span class="stat-label">Projects</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">2</span>
-            <span class="stat-label">Platforms</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">Open</span>
-            <span class="stat-label">For Work</span>
-          </div>
+        <a class="nav-cta" href="assets/Sheikh_Naim_Resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
+    </nav>
+</header>
+
+<main class="wrap">
+
+    <section class="hero" id="home" style="border-bottom:none;">
+        <div class="status"><span class="dot"></span>Open to mobile developer roles — Toronto / Remote</div>
+        <h1>Native mobile apps for iOS and Android.</h1>
+        <p class="lede">I'm Sheikh, a mobile developer building with Swift/SwiftUI on iOS and Kotlin on Android — currently finishing the Mobile Web Developer Using AI diploma at triOS College in Toronto.</p>
+        <div class="cta-row">
+            <a class="btn btn-primary" href="#work">View my work</a>
+            <a class="btn btn-secondary" href="#contact">Get in touch</a>
         </div>
-      </div>
-      <div class="hero-scroll-indicator">
-        <span>Scroll</span>
-        <i class="fas fa-chevron-down"></i>
-      </div>
+        <div class="stat-row">
+            <div class="stat"><b>2</b><span>native platforms</span></div>
+            <div class="stat"><b>6</b><span>shipped projects</span></div>
+            <div class="stat"><b>2027</b><span>expected grad</span></div>
+        </div>
     </section>
 
-    <!-- ======== PROJECTS ======== -->
-    <section id="work" class="container">
-      <div class="section-header">
-        <div>
-          <span class="section-subtitle">My Work</span>
-          <h2>Projects</h2>
+    <section id="work">
+        <div class="section-head">
+            <h2>Selected work</h2>
+            <span class="note">6 projects</span>
         </div>
-        <div class="filter-tabs">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="mobile">Mobile</button>
-          <button class="filter-btn" data-filter="web">Web</button>
-          <button class="filter-btn" data-filter="design">UI/UX</button>
+        <div class="project-list">
+
+            <div class="project">
+                <span class="platform-tag tag-ios"><span class="dot"></span>iOS</span>
+                <div>
+                    <h3>Spendora</h3>
+                    <p>Capstone project — a privacy-first subscription tracker. Everything lives on-device: no backend, no accounts, no analytics. Includes a home screen widget and calendar-based renewal reminders.</p>
+                    <div class="stack"><span>SwiftUI</span><span>SwiftData</span><span>WidgetKit</span><span>UserNotifications</span></div>
+                    <div class="links"><a href="https://github.com/snaimio" target="_blank" rel="noopener">Code →</a></div>
+                </div>
+            </div>
+
+            <div class="project">
+                <span class="platform-tag tag-android"><span class="dot"></span>Android</span>
+                <div>
+                    <h3>HydrationApp</h3>
+                    <p>A daily hydration tracker built to go deep on modern Android: Compose UI, Hilt for DI, Room + DataStore for persistence, Retrofit for a live weather-based recommendation feature, and WorkManager-driven reminders — with Compose UI tests and CI on top.</p>
+                    <div class="stack"><span>Kotlin</span><span>Jetpack Compose</span><span>Hilt</span><span>Room</span><span>Retrofit</span><span>WorkManager</span></div>
+                    <div class="links"><a href="https://github.com/snaimio" target="_blank" rel="noopener">Code →</a></div>
+                </div>
+            </div>
+
+            <div class="project">
+                <span class="platform-tag tag-android"><span class="dot"></span>Android</span>
+                <div>
+                    <h3>Finance Tracker</h3>
+                    <p>Personal finance app built on MVVM with Room for local storage and Coroutines for async work. A unit test suite around the ViewModel layer cut regressions during later feature work.</p>
+                    <div class="stack"><span>Kotlin</span><span>MVVM</span><span>Room</span><span>Coroutines</span></div>
+                    <div class="links"><a href="https://github.com/snaimio" target="_blank" rel="noopener">Code →</a></div>
+                </div>
+            </div>
+
+            <div class="project">
+                <span class="platform-tag tag-ios"><span class="dot"></span>iOS</span>
+                <div>
+                    <h3>Campus Navigator</h3>
+                    <p>Real-time campus routing app using MapKit and Core Location, built on MVC with an optimized pathfinding layer for faster route calculation.</p>
+                    <div class="stack"><span>Swift</span><span>UIKit</span><span>MapKit</span><span>Core Location</span></div>
+                    <div class="links"><a href="https://github.com/snaimio" target="_blank" rel="noopener">Code →</a></div>
+                </div>
+            </div>
+
+            <div class="project">
+                <span class="platform-tag tag-web"><span class="dot"></span>Web</span>
+                <div>
+                    <h3>MovieFinder</h3>
+                    <p>Mood-based movie discovery app on top of the TMDB API — search, filter by genre or mood, and view details and ratings.</p>
+                    <div class="stack"><span>JavaScript</span><span>TMDB API</span><span>Fetch API</span></div>
+                    <div class="links"><a href="movies.html" target="_blank" rel="noopener">Live demo →</a><a href="https://github.com/snaimio" target="_blank" rel="noopener">Code →</a></div>
+                </div>
+            </div>
+
+            <div class="project">
+                <span class="platform-tag tag-web"><span class="dot"></span>UI/UX</span>
+                <div>
+                    <h3>GreenThumb</h3>
+                    <p>A community garden app concept connecting urban neighbours to share plants and resources. Full Figma prototype: 10+ screens and a complete design system.</p>
+                    <div class="stack"><span>Figma</span><span>Prototyping</span><span>Design systems</span></div>
+                    <div class="links"><a href="https://github.com/snaimio" target="_blank" rel="noopener">Prototype →</a></div>
+                </div>
+            </div>
+
         </div>
-      </div>
-
-      <div class="project-grid">
-
-        <!-- GreenThumb -->
-        <div class="project-card featured" data-category="design">
-          <div class="card-image">
-            <img src="assets/images/greenthumb.png" alt="GreenThumb App">
-            <div class="project-overlay">
-              <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
-              <span class="project-year">2026</span>
-            </div>
-          </div>
-          <div class="card-info">
-            <p class="project-category">UI/UX · Figma Prototype</p>
-            <h3>GreenThumb</h3>
-            <p class="project-desc">A community garden app designed to help urban neighbours grow plants, share resources, and build friendships. Full interactive Figma prototype with 10+ screens and a complete design system.</p>
-            <div class="project-tech">
-              <span>Figma</span>
-              <span>Prototyping</span>
-              <span>User Research</span>
-              <span>Accessibility</span>
-            </div>
-            <div class="project-features">
-              <span><i class="fas fa-check-circle"></i> 10+ screens</span>
-              <span><i class="fas fa-check-circle"></i> Full prototype</span>
-              <span><i class="fas fa-check-circle"></i> Design system</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/snaimio" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-              <a href="#" class="btn-secondary"><i class="fas fa-external-link-alt"></i> Prototype</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Finance Tracker -->
-        <div class="project-card" data-category="mobile">
-          <div class="card-image">
-            <img src="assets/images/finance-tracker.png" alt="Android Finance Tracker">
-            <div class="project-overlay">
-              <span class="project-year">2025</span>
-            </div>
-          </div>
-          <div class="card-info">
-            <p class="project-category">Native Android</p>
-            <h3>Finance Tracker</h3>
-            <p class="project-desc">Full-featured finance app using MVVM architecture. Room Database and Kotlin Coroutines for performance. Unit testing suite reduced critical defects by ~90%.</p>
-            <div class="project-tech">
-              <span>Kotlin</span>
-              <span>MVVM</span>
-              <span>Room DB</span>
-              <span>Coroutines</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/snaimio" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Campus Navigator -->
-        <div class="project-card" data-category="mobile">
-          <div class="card-image">
-            <img src="assets/images/campus-nav.png" alt="iOS Campus Navigator">
-            <div class="project-overlay">
-              <span class="project-year">2025</span>
-            </div>
-          </div>
-          <div class="card-info">
-            <p class="project-category">Native iOS</p>
-            <h3>Campus Navigator</h3>
-            <p class="project-desc">Real-time campus routing using MapKit and Core Location. MVC architecture with optimized pathfinding — ~40% faster responsiveness.</p>
-            <div class="project-tech">
-              <span>Swift</span>
-              <span>UIKit</span>
-              <span>MapKit</span>
-              <span>Core Location</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/snaimio" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- MovieFinder API -->
-        <div class="project-card" data-category="web">
-          <div class="card-image">
-            <img src="assets/images/moviefinder.png" alt="MovieFinder App">
-            <div class="project-overlay">
-              <span class="project-year">2026</span>
-            </div>
-          </div>
-          <div class="card-info">
-            <p class="project-category">Web · API Integration</p>
-            <h3>MovieFinder</h3>
-            <p class="project-desc">Mood-based movie discovery app powered by the TMDB API. Search, filter by genre and mood, view details with ratings — all with smooth animations.</p>
-            <div class="project-tech">
-              <span>JavaScript</span>
-              <span>TMDB API</span>
-              <span>Fetch API</span>
-              <span>CSS Animations</span>
-            </div>
-            <div class="project-links">
-              <a href="movies.html" class="btn-primary"><i class="fas fa-play"></i> Live Demo</a>
-              <a href="https://github.com/snaimio" target="_blank" class="btn-secondary"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Portfolio -->
-        <div class="project-card" data-category="web">
-          <div class="card-image">
-            <img src="assets/images/portfolio.png" alt="Portfolio Website">
-            <div class="project-overlay">
-              <span class="project-year">2026</span>
-            </div>
-          </div>
-          <div class="card-info">
-            <p class="project-category">Web Dev</p>
-            <h3>Portfolio 4.0</h3>
-            <p class="project-desc">This very site. Pure HTML, CSS, and JavaScript — dark/light mode with localStorage persistence, project filtering, smooth scroll, and mobile menu.</p>
-            <div class="project-tech">
-              <span>HTML5</span>
-              <span>CSS3</span>
-              <span>JavaScript</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/snaimio" target="_blank" class="btn-primary"><i class="fab fa-github"></i> Code</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="section-footer">
-        <a href="https://github.com/snaimio" target="_blank" class="view-all">View All on GitHub <i class="fas fa-arrow-right"></i></a>
-      </div>
     </section>
 
-    <!-- ======== ABOUT ======== -->
-    <section id="about" class="container">
-      <div class="section-header">
-        <div>
-          <span class="section-subtitle">Get to Know Me</span>
-          <h2>About Me</h2>
+    <section id="about">
+        <div class="section-head">
+            <h2>About</h2>
         </div>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="lead">I'm a Mobile Developer who completed triOS College's intensive 20-month Mobile Web Developer program — with a 16-week internship, two capstone apps, and a Figma prototype that solves a real community problem.</p>
-
-          <div class="journey-timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">The Beginning</span>
-                <h4>First Line of Code</h4>
-                <p>Built my first app as a teenager — a simple to-do list that sparked a lifelong passion. Self-taught Swift and Kotlin through online courses.</p>
-              </div>
+        <div class="about-grid">
+            <div>
+                <p>I build native apps on both major mobile platforms rather than specializing in just one — SwiftUI on iOS, Kotlin and Jetpack Compose on Android. That dual footing shows up in how I work: I care about platform conventions (Apple's HIG, Material Design) as much as the code underneath them.</p>
+                <p>Outside of coursework, I use AI tools deliberately across the dev workflow — for scaffolding, debugging, and code review — while keeping the judgment calls on architecture and quality my own.</p>
+                <div class="skill-groups">
+                    <div>
+                        <h5>Mobile</h5>
+                        <ul><li>Swift / SwiftUI</li><li>Kotlin / Compose</li><li>Java</li><li>Xcode / Android Studio</li></ul>
+                    </div>
+                    <div>
+                        <h5>Architecture</h5>
+                        <ul><li>MVVM</li><li>MVC</li><li>REST APIs</li><li>Local persistence</li></ul>
+                    </div>
+                    <div>
+                        <h5>Design</h5>
+                        <ul><li>Figma</li><li>Prototyping</li><li>Apple HIG</li><li>Material Design</li></ul>
+                    </div>
+                    <div>
+                        <h5>Tooling</h5>
+                        <ul><li>Git / GitHub</li><li>Agile / Scrum</li><li>Unit testing</li><li>CI (GitHub Actions)</li></ul>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">2024 – 2025</span>
-                <h4>triOS College</h4>
-                <p>Ontario College Diploma — Mobile Web Developer Using AI. Native Android (Kotlin), native iOS (Swift), REST APIs, Agile, and UI/UX design.</p>
-              </div>
+            <div>
+                <div class="timeline-row">
+                    <div class="when">2024–27</div>
+                    <div>
+                        <h4>triOS College</h4>
+                        <p>Ontario College Diploma, Mobile Web Developer Using AI. Native Android (Kotlin), native iOS (Swift), REST APIs, Agile, and UI/UX design.</p>
+                    </div>
+                </div>
+                <div class="timeline-row">
+                    <div class="when">2026</div>
+                    <div>
+                        <h4>Software Developer Intern</h4>
+                        <p>Digital Solutions Lab, triOS. Four-developer Agile team — React front-ends, RESTful APIs, peer code review, 15+ production bug fixes.</p>
+                    </div>
+                </div>
+                <div class="timeline-row">
+                    <div class="when">Earlier</div>
+                    <div>
+                        <h4>Self-taught foundations</h4>
+                        <p>Started with a simple to-do list app as a teenager, then worked through Swift and Kotlin independently before formal coursework.</p>
+                    </div>
+                </div>
             </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">Jan 2026</span>
-                <h4>Software Developer Intern</h4>
-                <p>Digital Solutions Lab at triOS — 4-developer Agile team, React front-ends, RESTful APIs, peer code reviews, 15+ production bug fixes.</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <span class="timeline-year">Now</span>
-                <h4>Open to Opportunities</h4>
-                <p>Seeking full-time mobile developer roles in Toronto or remote where I can bring Android/iOS expertise and design thinking to a great product team.</p>
-              </div>
-            </div>
-          </div>
-
-          <blockquote class="personal-quote">"The expert in anything was once a beginner."</blockquote>
         </div>
-
-        <div class="skills-showcase">
-          <h3>Skills &amp; Expertise</h3>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h4><i class="fas fa-mobile-alt"></i> Mobile Development</h4>
-              <div class="skill-tags">
-                <span>Kotlin</span><span>Swift</span><span>Java</span>
-                <span>Android Studio</span><span>Xcode</span><span>UIKit</span><span>MapKit</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4><i class="fas fa-paint-brush"></i> UI/UX Design</h4>
-              <div class="skill-tags">
-                <span>Figma</span><span>Adobe XD</span><span>Prototyping</span>
-                <span>Wireframing</span><span>User Testing</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4><i class="fas fa-code"></i> Architecture &amp; Web</h4>
-              <div class="skill-tags">
-                <span>MVVM</span><span>MVC</span><span>REST APIs</span>
-                <span>React</span><span>HTML/CSS</span><span>JavaScript</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4><i class="fas fa-tools"></i> Tools &amp; Methods</h4>
-              <div class="skill-tags">
-                <span>Git</span><span>GitHub</span><span>Agile/Scrum</span>
-                <span>Unit Testing</span><span>Room Database</span><span>Retrofit</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <!-- ======== WANT TO ======== -->
-    <section class="want-to container">
-      <h2>Want to&hellip;</h2>
-      <div class="want-to-grid">
-        <div class="want-to-card">
-          <div class="want-to-icon">💼</div>
-          <h3>Offer a job?</h3>
-          <p>I'm open to full-time mobile developer or junior dev roles in Toronto or remote. My dual expertise in native mobile dev and UI/UX design adds a unique lens to any team.</p>
-          <a href="#contact" class="card-link">Let's Talk →</a>
+    <section id="contact" style="border-bottom:none;">
+        <div class="contact-card">
+            <div>
+                <h2>Let's build something.</h2>
+                <p>Open to full-time mobile developer roles in Toronto or remote, plus freelance and collaboration on native app projects.</p>
+                <a class="btn btn-primary" href="mailto:Sheikh.Naim@triosstudent.com">Email me</a>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:Sheikh.Naim@triosstudent.com">Email <span class="arrow">→</span></a>
+                <a href="https://www.linkedin.com/in/sheikh-naim-704655384" target="_blank" rel="noopener">LinkedIn <span class="arrow">→</span></a>
+                <a href="https://github.com/snaimio" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
+                <a href="assets/Sheikh_Naim_Resume.pdf" target="_blank" rel="noopener">Resume (PDF) <span class="arrow">→</span></a>
+            </div>
         </div>
-        <div class="want-to-card">
-          <div class="want-to-icon">🤝</div>
-          <h3>Connect?</h3>
-          <p>Whether you're a developer, designer, or tech enthusiast — I'm always up for a virtual coffee, knowledge-sharing, or just talking about cool app ideas.</p>
-          <a href="#contact" class="card-link">Connect →</a>
-        </div>
-        <div class="want-to-card">
-          <div class="want-to-icon">⚡</div>
-          <h3>Build something?</h3>
-          <p>Have an app idea or need a UI/UX prototype? I'm actively looking for freelance projects and meaningful collaborations to grow my portfolio.</p>
-          <a href="#contact" class="card-link">Let's Build →</a>
-        </div>
-      </div>
     </section>
 
-    <!-- ======== CONTACT ======== -->
-    <section id="contact" class="container">
-      <div class="contact-grid">
-        <div class="contact-info">
-          <span class="section-subtitle">Let's Connect</span>
-          <h2>Get In Touch</h2>
-          <p class="contact-description">Whether you want something built, need a mobile dev on your team, or just want to say hi — I'd love to hear from you.</p>
-          <div class="contact-details">
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <div>
-                <span class="contact-label">Email</span>
-                <a href="mailto:Sheikh.Naim@triosstudent.com">Sheikh.Naim@triosstudent.com</a>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <div>
-                <span class="contact-label">Location</span>
-                <span>Toronto, ON &mdash; Open to Remote</span>
-              </div>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-briefcase"></i>
-              <div>
-                <span class="contact-label">Status</span>
-                <span class="status-open">&#9679; Open to Work</span>
-              </div>
-            </div>
-          </div>
-          <div class="social-links">
-            <a href="https://github.com/snaimio" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
-            <a href="www.linkedin.com/in/sheikh-naim-704655384" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#" class="social-link"><i class="fab fa-figma"></i></a>
-          </div>
-        </div>
+</main>
 
-        <form class="contact-form" id="contact-form">
-          <div class="form-group">
-            <input type="text" placeholder="Your Name" required>
-          </div>
-          <div class="form-group">
-            <input type="email" placeholder="Your Email" required>
-          </div>
-          <div class="form-group">
-            <input type="text" placeholder="Subject">
-          </div>
-          <div class="form-group">
-            <textarea placeholder="Your Message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn-primary btn-block">
-            Send Message <i class="fas fa-paper-plane"></i>
-          </button>
-        </form>
-      </div>
-    </section>
+<footer>© 2026 Sheikh Naim · Toronto, ON</footer>
 
-  </main>
-
-  <footer>
-    <div class="container footer-content">
-      <div class="footer-nav">
-        <a href="#home">Home</a>
-        <a href="#work">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="footer-social">
-        <a href="https://github.com/snaimio" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="www.linkedin.com/in/sheikh-naim-704655384" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#"><i class="fab fa-figma"></i></a>
-      </div>
-      <p class="footer-credit">&copy; 2026 Sheikh Naim, all rights reserved</p>
-    </div>
-  </footer>
-
-  <script src="js/app.js"></script>
 </body>
 </html>
