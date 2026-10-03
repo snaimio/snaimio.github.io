@@ -110,10 +110,11 @@ function initRotatingText() {
   if (!el) return;
 
   const phrases = [
-    'mobile experiences',
+    'mobile & web apps',
     'iOS apps in Swift',
     'Android apps in Kotlin',
-    'UI/UX prototypes',
+    'full-stack web solutions',
+    'modern UI/UX designs',
     'clean, testable code',
   ];
   let index = 0;
