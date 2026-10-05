@@ -397,7 +397,11 @@ body.light-mode .project-card {
     height: 220px;
     position: relative;
     overflow: hidden;
-    background: #111;
+    background: #0d0d0d;
+}
+
+body.light-mode .card-image {
+    background: #f4f4f5;
 }
 
 .project-card.featured .card-image { 
@@ -408,7 +412,7 @@ body.light-mode .project-card {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    object-position: top center;
     transition: transform 0.5s ease;
 }
 
