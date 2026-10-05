@@ -1,76 +1,83 @@
 /**
  * SHEIKH NAIM — DEVELOPER PORTFOLIO
- * Vanilla JavaScript Engine
+ * Production-Grade Vanilla JavaScript Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initFilter();
-  initRotatingText();
+  initThemeEngine();
+  initProjectFiltering();
+  initCopyEmail();
   initScrollSpy();
-  initMobileMenu();
+  initMobileDrawer();
   initContactForm();
 });
 
-/* --- 1. Theme Switcher (OLED Dark / Minimal Light) --- */
-function initTheme() {
-  const toggleBtn = document.getElementById('theme-toggle');
+/* --------------------------------------------------------------------------
+   1. THEME ENGINE (Dark / Light Mode with System Preference & LocalStorage)
+   -------------------------------------------------------------------------- */
+function initThemeEngine() {
+  const themeBtn = document.getElementById('theme-toggle');
   const body = document.body;
-  if (!toggleBtn) return;
+  if (!themeBtn) return;
 
-  const savedTheme = localStorage.getItem('theme') || 'dark-mode';
-  if (savedTheme === 'light-mode') {
-    body.classList.add('light-mode');
+  const savedTheme = localStorage.getItem('theme-preference');
+  const systemPrefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+  
+  if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
+    body.classList.add('light-theme');
     updateThemeIcon(true);
   } else {
-    body.classList.remove('light-mode');
+    body.classList.remove('light-theme');
     updateThemeIcon(false);
   }
 
-  toggleBtn.addEventListener('click', () => {
-    const isLight = body.classList.toggle('light-mode');
-    localStorage.setItem('theme', isLight ? 'light-mode' : 'dark-mode');
+  themeBtn.addEventListener('click', () => {
+    const isLight = body.classList.toggle('light-theme');
+    localStorage.setItem('theme-preference', isLight ? 'light' : 'dark');
     updateThemeIcon(isLight);
+    showToast(isLight ? 'Switched to Light Theme' : 'Switched to Dark Theme', 'info');
   });
 
   function updateThemeIcon(isLight) {
-    const icon = toggleBtn.querySelector('i');
+    const icon = themeBtn.querySelector('i');
     if (icon) {
       icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
     }
   }
 }
 
-/* --- 2. Project Category Filtering --- */
-function initFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+/* --------------------------------------------------------------------------
+   2. PROJECT CATEGORY FILTERING (Smooth CSS Transition)
+   -------------------------------------------------------------------------- */
+function initProjectFiltering() {
+  const filterTabs = document.querySelectorAll('.filter-tab');
+  const allProjectItems = document.querySelectorAll('[data-category]');
 
-  if (!filterBtns.length || !projectCards.length) return;
+  if (!filterTabs.length || !allProjectItems.length) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+  filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      filterTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-      const filter = btn.getAttribute('data-filter');
+      const selectedFilter = tab.getAttribute('data-filter');
 
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        const match = filter === 'all' || category === filter;
+      allProjectItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        const matches = selectedFilter === 'all' || itemCategory === selectedFilter;
 
-        if (match) {
-          card.style.display = '';
+        if (matches) {
+          item.style.display = '';
           requestAnimationFrame(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
+            item.style.opacity = '1';
+            item.style.transform = 'translateY(0)';
           });
         } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(12px)';
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(16px)';
           setTimeout(() => {
-            if (card.style.opacity === '0') {
-              card.style.display = 'none';
+            if (item.style.opacity === '0') {
+              item.style.display = 'none';
             }
           }, 250);
         }
@@ -79,104 +86,142 @@ function initFilter() {
   });
 }
 
-/* --- 3. Hero Rotating Text --- */
-function initRotatingText() {
-  const el = document.querySelector('.rotating-text');
-  if (!el) return;
+/* --------------------------------------------------------------------------
+   3. 1-CLICK EMAIL COPY & TOAST NOTIFICATION
+   -------------------------------------------------------------------------- */
+function initCopyEmail() {
+  const copyButtons = document.querySelectorAll('.copy-email-btn');
 
-  const phrases = [
-    'iOS apps in Swift',
-    'Android apps in Kotlin',
-    'full-stack web apps',
-    'PHP & MySQL backends',
-    'modern UI/UX designs',
-    'scalable clean code'
-  ];
-  let index = 0;
-
-  setInterval(() => {
-    el.style.opacity = '0';
-    setTimeout(() => {
-      index = (index + 1) % phrases.length;
-      el.textContent = phrases[index];
-      el.style.opacity = '1';
-    }, 250);
-  }, 2800);
+  copyButtons.forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const email = btn.getAttribute('data-email') || 'Sheikh.Naim@triosstudent.com';
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast(`Copied ${email} to clipboard!`, 'success');
+      } catch (err) {
+        // Fallback for older browsers
+        const textarea = document.createElement('textarea');
+        textarea.value = email;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showToast(`Copied ${email} to clipboard!`, 'success');
+      }
+    });
+  });
 }
 
-/* --- 4. Navigation Scroll Spy & Navbar Blur --- */
+function showToast(message, type = 'success') {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = `toast toast-${type}`;
+  
+  const iconClass = type === 'success' ? 'fa-check-circle' : 'fa-info-circle';
+  toast.innerHTML = `<i class="fas ${iconClass}"></i> <span>${message}</span>`;
+  
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    toast.style.transition = 'all 0.3s ease';
+    setTimeout(() => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, 300);
+  }, 3200);
+}
+
+/* --------------------------------------------------------------------------
+   4. SCROLL-SPY & HEADER ELEVATION
+   -------------------------------------------------------------------------- */
 function initScrollSpy() {
-  const navbar = document.getElementById('navbar');
+  const header = document.getElementById('header');
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
 
   window.addEventListener('scroll', () => {
-    if (navbar) {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    const scrollY = window.scrollY;
+
+    // Header glassmorphism on scroll
+    if (header) {
+      header.classList.toggle('scrolled', scrollY > 40);
     }
 
-    let currentSection = '';
-    const scrollPos = window.scrollY + 120;
-
-    sections.forEach(sec => {
-      if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
-        currentSection = sec.getAttribute('id');
+    // Scroll spy section highlighting
+    let currentId = '';
+    sections.forEach(section => {
+      const top = section.offsetTop - 140;
+      const height = section.offsetHeight;
+      if (scrollY >= top && scrollY < top + height) {
+        currentId = section.getAttribute('id');
       }
     });
 
     navLinks.forEach(link => {
       link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentSection}`) {
+      if (link.getAttribute('href') === `#${currentId}`) {
         link.classList.add('active');
       }
     });
   }, { passive: true });
 }
 
-/* --- 5. Mobile Navigation Menu --- */
-function initMobileMenu() {
-  const menuBtn = document.querySelector('.mobile-menu-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
+/* --------------------------------------------------------------------------
+   5. MOBILE NAVIGATION DRAWER
+   -------------------------------------------------------------------------- */
+function initMobileDrawer() {
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const drawer = document.getElementById('mobile-drawer');
 
-  if (!menuBtn || !mobileMenu) return;
+  if (!toggleBtn || !drawer) return;
 
-  menuBtn.addEventListener('click', () => {
-    const isActive = mobileMenu.classList.toggle('active');
-    const icon = menuBtn.querySelector('i');
-    if (icon) {
-      icon.className = isActive ? 'fas fa-xmark' : 'fas fa-bars';
-    }
+  toggleBtn.addEventListener('click', () => {
+    const isActive = drawer.classList.toggle('active');
+    toggleBtn.setAttribute('aria-expanded', String(isActive));
   });
 
-  mobileMenu.querySelectorAll('a').forEach(link => {
+  // Close when tapping links
+  drawer.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      const icon = menuBtn.querySelector('i');
-      if (icon) icon.className = 'fas fa-bars';
+      drawer.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', (e) => {
+    if (!drawer.contains(e.target) && !toggleBtn.contains(e.target) && drawer.classList.contains('active')) {
+      drawer.classList.remove('active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+    }
   });
 }
 
-/* --- 6. Contact Form Submission Handler --- */
+/* --------------------------------------------------------------------------
+   6. CONTACT FORM SUBMISSION
+   -------------------------------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
+    const btn = document.getElementById('submit-btn');
     if (!btn) return;
 
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-    btn.classList.add('btn-success');
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Email...';
     btn.disabled = true;
 
+    showToast('Opening default email client...', 'info');
+
     setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.classList.remove('btn-success');
-      btn.disabled = false;
-      form.reset();
-    }, 3500);
+      btn.innerHTML = '<i class="fas fa-check"></i> Ready!';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+        btn.disabled = false;
+      }, 3000);
+    }, 1000);
   });
 }

@@ -3,567 +3,518 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sheikh Naim — Mobile & Full-Stack Web Developer building native iOS (Swift), Android (Kotlin), and full-stack web applications.">
-  <title>Sheikh Naim | Mobile & Full-Stack Web Developer</title>
-  
-  <!-- Fonts -->
+  <meta name="description" content="Sheikh Naim — Mobile & Full-Stack Developer specializing in native iOS (Swift/SwiftUI), native Android (Kotlin/Compose), and modern full-stack web applications. Based in Toronto, Canada.">
+  <meta name="keywords" content="Sheikh Naim, Mobile Developer, iOS Developer, Android Developer, SwiftUI, Kotlin, Jetpack Compose, Full Stack, Toronto, Software Engineer">
+  <meta name="author" content="Sheikh Naim">
+  <meta property="og:title" content="Sheikh Naim | Mobile & Full-Stack Developer">
+  <meta property="og:description" content="Native iOS (Swift), Android (Kotlin), and modern full-stack web applications. Explore projects and technical architecture.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://snaimio.github.io/">
+
+  <title>Sheikh Naim — Mobile & Full-Stack Developer</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Custom Stylesheet -->
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav id="navbar">
-    <div class="container nav-container">
-      <a href="#home" class="logo">SheikhNaim<span>.dev</span></a>
-      
-      <div class="nav-links">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#work" class="nav-link">Projects</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
+  <!-- Background Ambient Glow Canvas -->
+  <div class="glow-backdrop">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+  </div>
 
-      <div class="nav-actions">
-        <button id="theme-toggle" aria-label="Toggle dark/light mode">
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Header / Navigation -->
+  <header id="header" class="site-header">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo" aria-label="Sheikh Naim Homepage">
+        <span class="logo-text">SN</span>
+        <span class="logo-name">Sheikh Naim<span class="dot">.</span></span>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-controls">
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle visual theme" title="Toggle Theme">
           <i class="fas fa-sun"></i>
         </button>
-        <button class="mobile-menu-btn" aria-label="Open navigation menu">
-          <i class="fas fa-bars"></i>
+        <a href="assets/Sheikh_Naim_Resume.pdf" class="btn btn-sm btn-outline nav-resume-btn" download>
+          <i class="fas fa-arrow-down"></i> Resume
+        </a>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </button>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <!-- Mobile Menu Drawer -->
-  <div class="mobile-menu">
-    <a href="#home" class="nav-link">Home</a>
-    <a href="#work" class="nav-link">Projects</a>
-    <a href="#about" class="nav-link">About</a>
-    <a href="#contact" class="nav-link">Contact</a>
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <ul class="mobile-nav-list">
+      <li><a href="#home" class="mobile-nav-link">Home</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="assets/Sheikh_Naim_Resume.pdf" class="btn btn-primary" download style="width:100%; justify-content:center;">
+        <i class="fas fa-file-arrow-down"></i> Download Resume
+      </a>
+    </div>
   </div>
 
-  <main>
+  <main id="main-content">
 
-    <!-- ======== HERO ======== -->
-    <section id="home" class="hero">
-      <div class="container hero-wrapper">
+    <!-- ========================================== -->
+    <!-- HERO SECTION -->
+    <!-- ========================================== -->
+    <section id="home" class="hero-section">
+      <div class="content-container">
         
-        <div class="hero-content">
-          <div class="hero-badge-container">
-            <span class="status-dot"></span>
-            <span class="hero-badge-text">Available for Co-ops &amp; Junior Roles</span>
-          </div>
-
-          <h1 class="hero-title">
-            Hi, I'm <span class="gradient-text">Sheikh Naim</span>
-          </h1>
-
-          <p class="hero-dynamic">
-            I craft <span class="rotating-text">iOS apps in Swift</span>
-          </p>
-
-          <p class="hero-description">
-            Mobile &amp; Full-Stack Web Developer based in Toronto, ON. Studying in the 
-            <strong>Mobile Web Developer Using AI</strong> program at triOS College, blending native mobile craftsmanship (Swift &amp; Kotlin) with modern full-stack web engineering.
-          </p>
-
-          <div class="hero-cta">
-            <a href="#work" class="btn btn-primary">
-              <i class="fas fa-layer-group"></i> View Projects
-            </a>
-            <a href="assets/Sheikh_Naim_Resume.pdf" class="btn btn-secondary" download>
-              <i class="fas fa-file-arrow-down"></i> Resume
-            </a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-value">7+</span>
-              <span class="stat-label">Projects Built</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">3</span>
-              <span class="stat-label">Platforms</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">2027</span>
-              <span class="stat-label">triOS Grad</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Spotlight / Tech Focus Card -->
-        <div class="hero-card">
-          <div class="hero-card-header">
-            <span class="hero-card-title">Core Engineering Stack</span>
-            <span class="pill-status">Active</span>
-          </div>
-
-          <div class="hero-card-list">
-            <div class="hero-card-item">
-              <div class="hero-card-icon ios"><i class="fab fa-apple"></i></div>
-              <div>
-                <div class="hero-card-item-title">iOS Development</div>
-                <div class="hero-card-item-desc">Swift 6, SwiftUI, SwiftData, WidgetKit, Swift Charts</div>
-              </div>
-            </div>
-
-            <div class="hero-card-item">
-              <div class="hero-card-icon android"><i class="fab fa-android"></i></div>
-              <div>
-                <div class="hero-card-item-title">Android Development</div>
-                <div class="hero-card-item-desc">Kotlin, Jetpack Compose, Hilt, Room DB, Coroutines</div>
-              </div>
-            </div>
-
-            <div class="hero-card-item">
-              <div class="hero-card-icon web"><i class="fas fa-server"></i></div>
-              <div>
-                <div class="hero-card-item-title">Full-Stack Web</div>
-                <div class="hero-card-item-desc">JavaScript (ES6+), PHP 8, MySQL, RESTful APIs</div>
-              </div>
-            </div>
-
-            <div class="hero-card-item">
-              <div class="hero-card-icon roadmap"><i class="fas fa-rocket"></i></div>
-              <div>
-                <div class="hero-card-item-title">Expanding Into</div>
-                <div class="hero-card-item-desc">Angular (TypeScript &amp; RxJS), React (Hooks)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ======== FEATURED PROJECTS ======== -->
-    <section id="work">
-      <div class="container">
-        
-        <div class="section-header">
-          <div>
-            <span class="section-subtitle">Portfolio</span>
-            <h2 class="section-title">Featured Projects</h2>
-          </div>
-
-          <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="mobile">Mobile (iOS &amp; Android)</button>
-            <button class="filter-btn" data-filter="web">Full-Stack Web</button>
-            <button class="filter-btn" data-filter="design">UI/UX Design</button>
-          </div>
-        </div>
-
-        <div class="project-grid">
-
-          <!-- 1. Spendora (Featured Mobile Capstone) -->
-          <article class="project-card featured" data-category="mobile">
-            <div class="card-visual-wrapper glow-ios">
-              <div class="device-frame-mobile">
-                <img src="assets/images/spendora.png" alt="Spendora iOS App Dashboard" loading="lazy">
-              </div>
-            </div>
-
-            <div class="card-details">
-              <div>
-                <div class="card-tag-wrapper">
-                  <span class="card-category-badge badge-ios">iOS · Capstone</span>
-                  <span class="card-year">2026</span>
-                </div>
-                
-                <h3 class="card-title">Spendora</h3>
-                <p class="card-desc">
-                  Privacy-first subscription and expense intelligence tracker for iOS. Features 100% on-device local storage with SwiftData, 1-tap payment logging with instant undo, interactive Home &amp; Lock Screen widgets via WidgetKit, and yearly analytics with Swift Charts.
-                </p>
-
-                <div class="card-highlights">
-                  <div class="card-highlight-item">
-                    <i class="fas fa-check-circle"></i> On-device data privacy via SwiftData
-                  </div>
-                  <div class="card-highlight-item">
-                    <i class="fas fa-check-circle"></i> WidgetKit home screen timeline updates
-                  </div>
-                  <div class="card-highlight-item">
-                    <i class="fas fa-check-circle"></i> Trend charts and CSV / PDF export
-                  </div>
-                </div>
-
-                <div class="tech-stack-pills">
-                  <span class="tech-pill">Swift 6</span>
-                  <span class="tech-pill">SwiftUI</span>
-                  <span class="tech-pill">SwiftData</span>
-                  <span class="tech-pill">WidgetKit</span>
-                  <span class="tech-pill">Swift Charts</span>
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a href="https://github.com/snaimio/Spendora" target="_blank" rel="noopener" class="btn-card btn-card-primary">
-                  <i class="fab fa-github"></i> View Code
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 2. LifeScore (Featured Android App) -->
-          <article class="project-card featured" data-category="mobile">
-            <div class="card-visual-wrapper glow-android">
-              <div class="device-frame-mobile">
-                <img src="assets/images/lifescore.png" alt="LifeScore Android App UI" loading="lazy">
-              </div>
-            </div>
-
-            <div class="card-details">
-              <div>
-                <div class="card-tag-wrapper">
-                  <span class="card-category-badge badge-android">Android · Native</span>
-                  <span class="card-year">2026</span>
-                </div>
-                
-                <h3 class="card-title">LifeScore</h3>
-                <p class="card-desc">
-                  Gamified life balance and habit-tracking Android application. Architected with clean MVVM and Unidirectional Data Flow (UDF) using Jetpack Compose, Room offline-first persistence, and Hilt dependency injection across 8 core dimensions of well-being.
-                </p>
-
-                <div class="card-highlights">
-                  <div class="card-highlight-item">
-                    <i class="fas fa-check-circle"></i> Declarative UI with Jetpack Compose
-                  </div>
-                  <div class="card-highlight-item">
-                    <i class="fas fa-check-circle"></i> Offline-first database with Room &amp; Flow
-                  </div>
-                  <div class="card-highlight-item">
-                    <i class="fas fa-check-circle"></i> Dependency injection with Dagger Hilt
-                  </div>
-                </div>
-
-                <div class="tech-stack-pills">
-                  <span class="tech-pill">Kotlin</span>
-                  <span class="tech-pill">Jetpack Compose</span>
-                  <span class="tech-pill">Hilt DI</span>
-                  <span class="tech-pill">Room DB</span>
-                  <span class="tech-pill">StateFlow</span>
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a href="https://github.com/snaimio/lifescore-android-app" target="_blank" rel="noopener" class="btn-card btn-card-primary">
-                  <i class="fab fa-github"></i> View Code
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3. MovieMoodMatcher (Web) -->
-          <article class="project-card" data-category="web">
-            <div class="card-visual-wrapper glow-web">
-              <div class="device-frame-browser">
-                <div class="browser-header">
-                  <span class="browser-dot red"></span>
-                  <span class="browser-dot yellow"></span>
-                  <span class="browser-dot green"></span>
-                  <div class="browser-url-bar"></div>
-                </div>
-                <div class="browser-content">
-                  <img src="assets/images/moviefinder.png" alt="MovieMoodMatcher Web App" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-            <div class="card-details">
-              <div>
-                <div class="card-tag-wrapper">
-                  <span class="card-category-badge badge-web">Web · REST API</span>
-                  <span class="card-year">2026</span>
-                </div>
-
-                <h3 class="card-title">MovieMoodMatcher</h3>
-                <p class="card-desc">
-                  Mood-driven film discovery application that queries the live TMDB REST API with debounced searching, dynamic genre filters, interactive movie modals, and responsive CSS3 animation sequences.
-                </p>
-
-                <div class="tech-stack-pills">
-                  <span class="tech-pill">JavaScript</span>
-                  <span class="tech-pill">TMDB API</span>
-                  <span class="tech-pill">Fetch API</span>
-                  <span class="tech-pill">CSS3</span>
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a href="https://github.com/snaimio/MovieMoodMatcher" target="_blank" rel="noopener" class="btn-card btn-card-primary">
-                  <i class="fab fa-github"></i> View Code
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 4. TechStore E-Commerce (Web) -->
-          <article class="project-card" data-category="web">
-            <div class="card-visual-wrapper glow-web">
-              <div class="device-frame-browser">
-                <div class="browser-header">
-                  <span class="browser-dot red"></span>
-                  <span class="browser-dot yellow"></span>
-                  <span class="browser-dot green"></span>
-                  <div class="browser-url-bar"></div>
-                </div>
-                <div class="browser-content">
-                  <img src="assets/images/techstore.png" alt="TechStore E-Commerce App" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-            <div class="card-details">
-              <div>
-                <div class="card-tag-wrapper">
-                  <span class="card-category-badge badge-ecommerce">Web · E-Commerce</span>
-                  <span class="card-year">2026</span>
-                </div>
-
-                <h3 class="card-title">TechStore E-Commerce</h3>
-                <p class="card-desc">
-                  Electronic hardware store application featuring dynamic category filtering, shopping cart state management, automated tax calculations, and a clean, accessible CSS Grid layout.
-                </p>
-
-                <div class="tech-stack-pills">
-                  <span class="tech-pill">JavaScript (ES6+)</span>
-                  <span class="tech-pill">HTML5</span>
-                  <span class="tech-pill">CSS Grid</span>
-                  <span class="tech-pill">Cart State</span>
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a href="https://github.com/snaimio/techstore-ecommerce" target="_blank" rel="noopener" class="btn-card btn-card-primary">
-                  <i class="fab fa-github"></i> View Code
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 5. GreenThumb (UI/UX Design System) -->
-          <article class="project-card" data-category="design">
-            <div class="card-visual-wrapper glow-design">
-              <div class="device-frame-mobile">
-                <img src="assets/images/greenthumb-mobile.png" alt="GreenThumb UI/UX Prototype" loading="lazy">
-              </div>
-            </div>
-
-            <div class="card-details">
-              <div>
-                <div class="card-tag-wrapper">
-                  <span class="card-category-badge badge-design">UI/UX · Design System</span>
-                  <span class="card-year">2026</span>
-                </div>
-
-                <h3 class="card-title">GreenThumb</h3>
-                <p class="card-desc">
-                  Community garden platform connecting neighbors to share gardening equipment and manage plot care. Built as a 10+ screen interactive Figma prototype following Apple HIG and Material Design 3 guidelines.
-                </p>
-
-                <div class="tech-stack-pills">
-                  <span class="tech-pill">Figma</span>
-                  <span class="tech-pill">Design System</span>
-                  <span class="tech-pill">Prototyping</span>
-                  <span class="tech-pill">WCAG AAA</span>
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a href="https://github.com/snaimio/greenthumb-uiux-prototype" target="_blank" rel="noopener" class="btn-card btn-card-primary">
-                  <i class="fab fa-github"></i> View System
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 6. Scooterama (Web Storefront) -->
-          <article class="project-card" data-category="web">
-            <div class="card-visual-wrapper glow-web">
-              <div class="device-frame-browser">
-                <div class="browser-header">
-                  <span class="browser-dot red"></span>
-                  <span class="browser-dot yellow"></span>
-                  <span class="browser-dot green"></span>
-                  <div class="browser-url-bar"></div>
-                </div>
-                <div class="browser-content">
-                  <img src="assets/images/scooterama.png" alt="Scooterama Storefront" loading="lazy">
-                </div>
-              </div>
-            </div>
-
-            <div class="card-details">
-              <div>
-                <div class="card-tag-wrapper">
-                  <span class="card-category-badge badge-ecommerce">Web · Brand Store</span>
-                  <span class="card-year">2026</span>
-                </div>
-
-                <h3 class="card-title">Scooterama</h3>
-                <p class="card-desc">
-                  Responsive urban retro scooter brand storefront. Engineered with smooth hero typography, interactive product collections, responsive drawer navigation, and fluid layout styling.
-                </p>
-
-                <div class="tech-stack-pills">
-                  <span class="tech-pill">HTML5</span>
-                  <span class="tech-pill">CSS3 Flexbox</span>
-                  <span class="tech-pill">JavaScript</span>
-                  <span class="tech-pill">Responsive</span>
-                </div>
-              </div>
-
-              <div class="card-actions">
-                <a href="https://github.com/snaimio/scooterama-ecommerce" target="_blank" rel="noopener" class="btn-card btn-card-primary">
-                  <i class="fab fa-github"></i> View Code
-                </a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ======== ABOUT & EXPERIENCE ======== -->
-    <section id="about">
-      <div class="container">
-        
-        <div class="section-header">
-          <div>
-            <span class="section-subtitle">Background</span>
-            <h2 class="section-title">About &amp; Expertise</h2>
-          </div>
-        </div>
-
-        <div class="about-grid">
+        <div class="hero-grid">
           
-          <!-- Left: Bio & Timeline -->
-          <div>
-            <p class="about-bio-text">
-              I'm a Toronto-based developer studying in the <strong>Mobile Web Developer Using AI</strong> program at <strong>triOS College</strong>. I build native mobile applications across iOS and Android — currently focused on <strong>SwiftUI for iOS</strong> and <strong>Kotlin / Jetpack Compose for Android</strong> — alongside full-stack web engineering with <strong>PHP / MySQL</strong>, expanding into <strong>Angular</strong> and <strong>React</strong>.
-            </p>
-
-            <div class="timeline">
-              
-              <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-year">2024 &mdash; 2027</div>
-                <h4 class="timeline-title">triOS College — Mobile Web Developer Using AI</h4>
-                <p class="timeline-desc">
-                  Intensive diploma program covering native iOS development (Swift / SwiftUI), native Android engineering (Kotlin / Jetpack Compose), full-stack web backends (PHP, MySQL, REST APIs), and AI integrations.
-                </p>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-year">2026</div>
-                <h4 class="timeline-title">Software Developer Intern &mdash; Digital Solutions Lab</h4>
-                <p class="timeline-desc">
-                  Collaborated within a 4-developer Agile team developing responsive web frontends, integrating RESTful backend APIs, participating in peer code reviews, and resolving production defects.
-                </p>
-              </div>
-
-              <div class="timeline-item">
-                <div class="timeline-marker"></div>
-                <div class="timeline-year">Present</div>
-                <h4 class="timeline-title">Available for Co-ops &amp; Junior Developer Roles</h4>
-                <p class="timeline-desc">
-                  Actively seeking mobile and full-stack software development opportunities in Toronto or remote to build user-centered software products.
-                </p>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- Right: Categorized Skills Matrix -->
-          <div class="skills-container">
+          <!-- Left Column: Bio & Core Info -->
+          <div class="hero-intro">
             
-            <div class="skills-category-card">
-              <div class="skills-category-header">
-                <i class="fab fa-apple"></i>
-                <h4 class="skills-category-title">iOS Development</h4>
+            <div class="status-badge">
+              <span class="status-indicator"></span>
+              <span class="status-text">Available for 2026 Co-ops &amp; Junior Roles</span>
+            </div>
+
+            <h1 class="hero-headline">
+              Crafting Native Mobile <br>
+              <span class="text-gradient">&amp; Full-Stack Systems.</span>
+            </h1>
+
+            <p class="hero-subtext">
+              I'm <strong>Sheikh Naim</strong>, a developer based in <strong>Toronto, Canada</strong>. Currently advancing in the <em>Mobile Web Developer Using AI</em> program at triOS College, specializing in native <strong>iOS (Swift/SwiftUI)</strong>, <strong>Android (Kotlin/Jetpack Compose)</strong>, and robust <strong>full-stack web engineering</strong>.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projects" class="btn btn-primary">
+                <i class="fas fa-shapes"></i> View Case Studies
+              </a>
+              <button class="btn btn-secondary copy-email-btn" data-email="Sheikh.Naim@triosstudent.com">
+                <i class="fas fa-copy"></i> Copy Email
+              </button>
+              <a href="https://github.com/snaimio" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+
+            <div class="hero-metrics">
+              <div class="metric-card">
+                <span class="metric-number">7+</span>
+                <span class="metric-label">Completed Projects</span>
               </div>
-              <div class="skill-tags-group">
-                <span class="skill-tag">Swift 6</span>
-                <span class="skill-tag">SwiftUI</span>
-                <span class="skill-tag">SwiftData</span>
-                <span class="skill-tag">WidgetKit</span>
-                <span class="skill-tag">Swift Charts</span>
-                <span class="skill-tag">UserNotifications</span>
-                <span class="skill-tag">Clean MVVM</span>
+              <div class="metric-divider"></div>
+              <div class="metric-card">
+                <span class="metric-number">2</span>
+                <span class="metric-label">Native Platforms</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-card">
+                <span class="metric-number">100%</span>
+                <span class="metric-label">Clean Code &amp; MVVM</span>
               </div>
             </div>
 
-            <div class="skills-category-card">
-              <div class="skills-category-header">
-                <i class="fab fa-android"></i>
-                <h4 class="skills-category-title">Android Development</h4>
+          </div>
+
+          <!-- Right Column: Interactive Code & Stack Preview -->
+          <div class="hero-showcase">
+            <div class="terminal-card">
+              
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot-red"></span>
+                  <span class="dot-yellow"></span>
+                  <span class="dot-green"></span>
+                </div>
+                <div class="terminal-title">
+                  <i class="fas fa-code"></i> SheikhNaim.swift
+                </div>
+                <div class="terminal-badge">Swift 6 · Native</div>
               </div>
-              <div class="skill-tags-group">
-                <span class="skill-tag">Kotlin</span>
-                <span class="skill-tag">Jetpack Compose</span>
-                <span class="skill-tag">Hilt DI</span>
-                <span class="skill-tag">Room DB</span>
-                <span class="skill-tag">Coroutines / Flow</span>
-                <span class="skill-tag">Retrofit 2</span>
-                <span class="skill-tag">WorkManager</span>
+
+              <div class="terminal-body">
+                <pre class="code-block"><code><span class="c-keyword">import</span> <span class="c-type">SwiftUI</span>
+<span class="c-keyword">import</span> <span class="c-type">SwiftData</span>
+
+<span class="c-keyword">struct</span> <span class="c-type">DeveloperProfile</span> {
+    <span class="c-keyword">let</span> name: <span class="c-type">String</span> = <span class="c-string">"Sheikh Naim"</span>
+    <span class="c-keyword">let</span> location: <span class="c-type">String</span> = <span class="c-string">"Toronto, ON, CA"</span>
+    <span class="c-keyword">let</span> focus: [<span class="c-type">Platform</span>] = [.iOS, .android, .web]
+    
+    <span class="c-keyword">var</span> coreStrengths: [<span class="c-type">String</span>] {
+        [
+            <span class="c-string">"SwiftUI &amp; SwiftData Persistence"</span>,
+            <span class="c-string">"Jetpack Compose &amp; Room DB"</span>,
+            <span class="c-string">"Clean MVVM &amp; Unidirectional Flow"</span>,
+            <span class="c-string">"PHP 8, MySQL &amp; RESTful APIs"</span>
+        ]
+    }
+}</code></pre>
+              </div>
+
+              <div class="terminal-footer">
+                <div class="stack-tag-row">
+                  <span class="stack-pill pill-ios"><i class="fab fa-apple"></i> iOS 18</span>
+                  <span class="stack-pill pill-android"><i class="fab fa-android"></i> Android Compose</span>
+                  <span class="stack-pill pill-web"><i class="fas fa-server"></i> REST APIs</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- FEATURED PROJECTS / CASE STUDIES -->
+    <!-- ========================================== -->
+    <section id="projects" class="section-padding">
+      <div class="content-container">
+        
+        <div class="section-title-wrap">
+          <div class="section-tag">Engineered Solutions</div>
+          <h2 class="section-heading">Featured Projects &amp; Case Studies</h2>
+          <p class="section-subheading">
+            Production-quality applications built with strict adherence to platform architectural patterns, clean state management, and modern UI paradigms.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-bar">
+          <button class="filter-tab active" data-filter="all">All Systems (6)</button>
+          <button class="filter-tab" data-filter="mobile">Native Mobile</button>
+          <button class="filter-tab" data-filter="web">Full-Stack Web</button>
+          <button class="filter-tab" data-filter="design">UI/UX Design Systems</button>
+        </div>
+
+        <div class="projects-layout">
+
+          <!-- ========================================== -->
+          <!-- FLAGSHIP 1: SPENDORA (iOS CAPSTONE) -->
+          <!-- ========================================== -->
+          <article class="project-flagship ios-theme" data-category="mobile">
+            <div class="flagship-visual">
+              <div class="device-mockup-wrap">
+                <div class="phone-frame">
+                  <div class="phone-notch"></div>
+                  <img src="assets/images/spendora.png" alt="Spendora iOS App Interface" class="phone-screen" loading="lazy">
+                </div>
+                <div class="mockup-ambient-glow glow-ios"></div>
               </div>
             </div>
 
-            <div class="skills-category-card">
-              <div class="skills-category-header">
-                <i class="fas fa-server"></i>
-                <h4 class="skills-category-title">Full-Stack Web &amp; Databases</h4>
+            <div class="flagship-content">
+              <div class="project-meta-row">
+                <span class="project-pill pill-ios"><i class="fab fa-apple"></i> iOS Capstone Project</span>
+                <span class="project-year">2026</span>
               </div>
-              <div class="skill-tags-group">
-                <span class="skill-tag">JavaScript (ES6+)</span>
-                <span class="skill-tag">PHP 8</span>
-                <span class="skill-tag">MySQL</span>
-                <span class="skill-tag">RESTful APIs</span>
-                <span class="skill-tag">HTML5 / CSS3</span>
-                <span class="skill-tag">Firebase Auth</span>
-                <span class="skill-tag">Firestore</span>
+
+              <h3 class="flagship-title">Spendora — Intelligent Subscription &amp; Expense Engine</h3>
+              
+              <p class="flagship-description">
+                A privacy-centric personal financial intelligence and recurring expense tracker for iOS 18. Built completely on-device without telemetry or third-party tracking, featuring instant 1-tap logging, interactive widgets, and historical spending analytics.
+              </p>
+
+              <div class="feature-spec-list">
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-shield-halved"></i></div>
+                  <div class="spec-text">
+                    <strong>100% On-Device Persistence:</strong> Uses Apple SwiftData with schema migrations and zero cloud leakage.
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-layer-group"></i></div>
+                  <div class="spec-text">
+                    <strong>WidgetKit &amp; Dynamic Timelines:</strong> Live Home and Lock Screen widgets for remaining budget awareness.
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-chart-line"></i></div>
+                  <div class="spec-text">
+                    <strong>Swift Charts Visualization:</strong> Interactive categorical breakdowns, projections, and CSV/PDF reports.
+                  </div>
+                </div>
+              </div>
+
+              <div class="tech-chip-group">
+                <span class="tech-chip">Swift 6</span>
+                <span class="tech-chip">SwiftUI</span>
+                <span class="tech-chip">SwiftData</span>
+                <span class="tech-chip">WidgetKit</span>
+                <span class="tech-chip">Swift Charts</span>
+                <span class="tech-chip">MVVM</span>
+              </div>
+
+              <div class="flagship-actions">
+                <a href="https://github.com/snaimio/Spendora" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <i class="fab fa-github"></i> Repository &amp; Source Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ========================================== -->
+          <!-- FLAGSHIP 2: LIFESCORE (ANDROID NATIVE) -->
+          <!-- ========================================== -->
+          <article class="project-flagship android-theme" data-category="mobile">
+            <div class="flagship-visual">
+              <div class="device-mockup-wrap">
+                <div class="phone-frame android-frame">
+                  <div class="android-camera"></div>
+                  <img src="assets/images/lifescore.png" alt="LifeScore Android App Interface" class="phone-screen" loading="lazy">
+                </div>
+                <div class="mockup-ambient-glow glow-android"></div>
               </div>
             </div>
 
-            <div class="skills-category-card">
-              <div class="skills-category-header">
-                <i class="fas fa-rocket"></i>
-                <h4 class="skills-category-title">Active Learning &amp; Roadmap</h4>
+            <div class="flagship-content">
+              <div class="project-meta-row">
+                <span class="project-pill pill-android"><i class="fab fa-android"></i> Android Native</span>
+                <span class="project-year">2026</span>
               </div>
-              <div class="skill-tags-group">
-                <span class="skill-tag learning">Angular (TypeScript &amp; RxJS)</span>
-                <span class="skill-tag learning">React (Component Architecture)</span>
-                <span class="skill-tag learning">Next.js</span>
-              </div>
-            </div>
 
-            <div class="skills-category-card">
-              <div class="skills-category-header">
-                <i class="fas fa-toolbox"></i>
-                <h4 class="skills-category-title">Tools &amp; Workflow</h4>
+              <h3 class="flagship-title">LifeScore — Holistic Habit &amp; Wellness Tracker</h3>
+              
+              <p class="flagship-description">
+                A native Android wellness system engineered to balance 8 life dimensions. Built according to Google's official Modern Android Architecture using Unidirectional Data Flow (UDF), Jetpack Compose, and offline-first Room persistence.
+              </p>
+
+              <div class="feature-spec-list">
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-cubes"></i></div>
+                  <div class="spec-text">
+                    <strong>Modern Jetpack Compose:</strong> 100% declarative UI with fluid state-driven transitions and Material 3 design.
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-database"></i></div>
+                  <div class="spec-text">
+                    <strong>Offline-First Room DB:</strong> Reactive SQLite queries streaming live changes via Kotlin StateFlow &amp; Coroutines.
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-network-wired"></i></div>
+                  <div class="spec-text">
+                    <strong>Dagger Hilt Dependency Injection:</strong> Decoupled repository patterns with testable ViewModel layers.
+                  </div>
+                </div>
               </div>
-              <div class="skill-tags-group">
-                <span class="skill-tag">Git &amp; GitHub</span>
-                <span class="skill-tag">Xcode</span>
-                <span class="skill-tag">Android Studio</span>
-                <span class="skill-tag">Postman</span>
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Agile / Scrum</span>
-                <span class="skill-tag">CI/CD Actions</span>
+
+              <div class="tech-chip-group">
+                <span class="tech-chip">Kotlin 2.0</span>
+                <span class="tech-chip">Jetpack Compose</span>
+                <span class="tech-chip">Room DB</span>
+                <span class="tech-chip">Dagger Hilt</span>
+                <span class="tech-chip">Coroutines</span>
+                <span class="tech-chip">StateFlow</span>
+              </div>
+
+              <div class="flagship-actions">
+                <a href="https://github.com/snaimio/lifescore-android-app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                  <i class="fab fa-github"></i> Repository &amp; Source Code
+                </a>
               </div>
             </div>
+          </article>
+
+          <!-- ========================================== -->
+          <!-- SECONDARY GRID: WEB & DESIGN PROJECTS -->
+          <!-- ========================================== -->
+          <div class="projects-subgrid">
+
+            <!-- Card 3: MovieMoodMatcher -->
+            <article class="project-card web-theme" data-category="web">
+              <div class="browser-mockup">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-address">api.themoviedb.org/3/discover</div>
+                </div>
+                <div class="browser-viewport">
+                  <img src="assets/images/moviefinder.png" alt="MovieMoodMatcher Application Preview" loading="lazy">
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="project-pill pill-web"><i class="fas fa-film"></i> REST API Web App</span>
+                  <span class="card-date">2026</span>
+                </div>
+                
+                <h4 class="card-heading">MovieMoodMatcher</h4>
+                <p class="card-summary">
+                  Mood-based movie recommendation engine utilizing TMDB RESTful endpoints. Engineered with debounced live search, dynamic mood-to-genre algorithms, asynchronous pagination, and responsive modal viewports.
+                </p>
+
+                <div class="tech-chip-group">
+                  <span class="tech-chip">JavaScript (ES6+)</span>
+                  <span class="tech-chip">TMDB API</span>
+                  <span class="tech-chip">Fetch API</span>
+                  <span class="tech-chip">CSS3 Grid</span>
+                </div>
+
+                <div class="card-footer-action">
+                  <a href="https://github.com/snaimio/MovieMoodMatcher" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    <span>View Repository</span> <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4: TechStore E-Commerce -->
+            <article class="project-card web-theme" data-category="web">
+              <div class="browser-mockup">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-address">techstore.snaimio.dev/catalog</div>
+                </div>
+                <div class="browser-viewport">
+                  <img src="assets/images/techstore.png" alt="TechStore E-Commerce Preview" loading="lazy">
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="project-pill pill-web"><i class="fas fa-cart-shopping"></i> E-Commerce Architecture</span>
+                  <span class="card-date">2026</span>
+                </div>
+                
+                <h4 class="card-heading">TechStore E-Commerce Platform</h4>
+                <p class="card-summary">
+                  Hardware e-commerce application featuring dynamic state-driven cart persistence, category filtering, subtotal tax computations, promo code validation, and a strict mobile-responsive CSS layout.
+                </p>
+
+                <div class="tech-chip-group">
+                  <span class="tech-chip">JavaScript</span>
+                  <span class="tech-chip">HTML5</span>
+                  <span class="tech-chip">CSS Grid / Flexbox</span>
+                  <span class="tech-chip">Cart State Machine</span>
+                </div>
+
+                <div class="card-footer-action">
+                  <a href="https://github.com/snaimio/techstore-ecommerce" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    <span>View Repository</span> <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5: GreenThumb UI/UX Design System -->
+            <article class="project-card design-theme" data-category="design">
+              <div class="browser-mockup">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-address">figma.com/@snaim/greenthumb</div>
+                </div>
+                <div class="browser-viewport">
+                  <img src="assets/images/greenthumb-mobile.png" alt="GreenThumb UI/UX System" loading="lazy">
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="project-pill pill-design"><i class="fab fa-figma"></i> UI/UX Design System</span>
+                  <span class="card-date">2026</span>
+                </div>
+                
+                <h4 class="card-heading">GreenThumb Community Design System</h4>
+                <p class="card-summary">
+                  A high-fidelity 10+ screen mobile product prototype and component library designed in Figma. Features design tokens, WCAG AAA accessibility compliance, user journey wireframes, and Apple Human Interface Guidelines adherence.
+                </p>
+
+                <div class="tech-chip-group">
+                  <span class="tech-chip">Figma</span>
+                  <span class="tech-chip">Design Tokens</span>
+                  <span class="tech-chip">Apple HIG</span>
+                  <span class="tech-chip">WCAG AAA</span>
+                </div>
+
+                <div class="card-footer-action">
+                  <a href="https://github.com/snaimio/greenthumb-uiux-prototype" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    <span>View Design Specs</span> <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 6: Scooterama Urban Mobility -->
+            <article class="project-card web-theme" data-category="web">
+              <div class="browser-mockup">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-address">scooterama.snaimio.dev</div>
+                </div>
+                <div class="browser-viewport">
+                  <img src="assets/images/scooterama.png" alt="Scooterama Storefront Preview" loading="lazy">
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="project-pill pill-web"><i class="fas fa-motorcycle"></i> Brand Storefront</span>
+                  <span class="card-date">2026</span>
+                </div>
+                
+                <h4 class="card-heading">Scooterama Urban Mobility</h4>
+                <p class="card-summary">
+                  High-performance urban scooter storefront engineered with modern typography, smooth hero section transitions, interactive product grids, and accessible off-canvas drawer navigation.
+                </p>
+
+                <div class="tech-chip-group">
+                  <span class="tech-chip">HTML5 Semantic</span>
+                  <span class="tech-chip">Modern CSS</span>
+                  <span class="tech-chip">JavaScript</span>
+                  <span class="tech-chip">Responsive Web</span>
+                </div>
+
+                <div class="card-footer-action">
+                  <a href="https://github.com/snaimio/scooterama-ecommerce" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    <span>View Repository</span> <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
 
           </div>
 
@@ -572,44 +523,119 @@
       </div>
     </section>
 
-    <!-- ======== OPPORTUNITIES ======== -->
-    <section>
-      <div class="container">
+    <!-- ========================================== -->
+    <!-- TECHNICAL SKILLS & ARSENAL -->
+    <!-- ========================================== -->
+    <section id="skills" class="section-padding bg-alt">
+      <div class="content-container">
         
-        <div class="section-header">
-          <div>
-            <span class="section-subtitle">Collaborate</span>
-            <h2 class="section-title">How We Can Work Together</h2>
-          </div>
+        <div class="section-title-wrap">
+          <div class="section-tag">Engineering Stack</div>
+          <h2 class="section-heading">Technical Arsenal &amp; Capabilities</h2>
+          <p class="section-subheading">
+            Proficiencies across native mobile ecosystems, full-stack web architectures, databases, and agile software development workflows.
+          </p>
         </div>
 
-        <div class="collab-grid">
-          
-          <div class="collab-card">
-            <div class="collab-icon"><i class="fas fa-briefcase"></i></div>
-            <h3 class="collab-title">Co-op &amp; Junior Roles</h3>
-            <p class="collab-desc">
-              Looking for a motivated mobile or full-stack developer? I'm available for co-op terms, junior developer positions, and internships in Toronto or remote.
-            </p>
-            <a href="#contact" class="collab-link">Get in touch <i class="fas fa-arrow-right"></i></a>
+        <div class="skills-bento">
+
+          <!-- 1. iOS Card -->
+          <div class="bento-card bento-ios">
+            <div class="bento-header">
+              <div class="bento-icon-badge ios"><i class="fab fa-apple"></i></div>
+              <div>
+                <h3 class="bento-title">Native iOS Engineering</h3>
+                <span class="bento-subtitle">Apple Ecosystem &amp; Swift</span>
+              </div>
+            </div>
+            <div class="bento-tags">
+              <span class="skill-badge primary">Swift 6</span>
+              <span class="skill-badge primary">SwiftUI</span>
+              <span class="skill-badge primary">SwiftData</span>
+              <span class="skill-badge">WidgetKit</span>
+              <span class="skill-badge">Swift Charts</span>
+              <span class="skill-badge">UserNotifications</span>
+              <span class="skill-badge">MVVM Architecture</span>
+              <span class="skill-badge">Xcode Tools</span>
+            </div>
           </div>
 
-          <div class="collab-card">
-            <div class="collab-icon"><i class="fas fa-mobile-screen"></i></div>
-            <h3 class="collab-title">Mobile App Development</h3>
-            <p class="collab-desc">
-              Have an iOS or Android app idea? I build clean native applications using SwiftUI and Jetpack Compose with offline-first local persistence and modern UI systems.
-            </p>
-            <a href="#contact" class="collab-link">Let's build <i class="fas fa-arrow-right"></i></a>
+          <!-- 2. Android Card -->
+          <div class="bento-card bento-android">
+            <div class="bento-header">
+              <div class="bento-icon-badge android"><i class="fab fa-android"></i></div>
+              <div>
+                <h3 class="bento-title">Native Android Engineering</h3>
+                <span class="bento-subtitle">Kotlin &amp; Modern Android (MAD)</span>
+              </div>
+            </div>
+            <div class="bento-tags">
+              <span class="skill-badge primary">Kotlin 2.0</span>
+              <span class="skill-badge primary">Jetpack Compose</span>
+              <span class="skill-badge primary">Room Database</span>
+              <span class="skill-badge">Dagger Hilt</span>
+              <span class="skill-badge">Kotlin Coroutines</span>
+              <span class="skill-badge">StateFlow &amp; Flow</span>
+              <span class="skill-badge">Retrofit 2</span>
+              <span class="skill-badge">Android Studio</span>
+            </div>
           </div>
 
-          <div class="collab-card">
-            <div class="collab-icon"><i class="fas fa-comments"></i></div>
-            <h3 class="collab-title">Tech Networking</h3>
-            <p class="collab-desc">
-              Always happy to connect with fellow engineers, designers, and tech professionals to exchange ideas, share knowledge, or talk about modern tech stacks.
-            </p>
-            <a href="#contact" class="collab-link">Connect <i class="fas fa-arrow-right"></i></a>
+          <!-- 3. Web & Backend Card -->
+          <div class="bento-card bento-web">
+            <div class="bento-header">
+              <div class="bento-icon-badge web"><i class="fas fa-server"></i></div>
+              <div>
+                <h3 class="bento-title">Full-Stack Web &amp; APIs</h3>
+                <span class="bento-subtitle">Backend Services &amp; Frontends</span>
+              </div>
+            </div>
+            <div class="bento-tags">
+              <span class="skill-badge primary">JavaScript (ES6+)</span>
+              <span class="skill-badge primary">PHP 8</span>
+              <span class="skill-badge primary">MySQL / SQL</span>
+              <span class="skill-badge">RESTful APIs</span>
+              <span class="skill-badge">HTML5 Semantic</span>
+              <span class="skill-badge">CSS3 / Grid / Flex</span>
+              <span class="skill-badge">Firebase Auth</span>
+              <span class="skill-badge">Firestore DB</span>
+            </div>
+          </div>
+
+          <!-- 4. Active Roadmap / Learning -->
+          <div class="bento-card bento-roadmap">
+            <div class="bento-header">
+              <div class="bento-icon-badge roadmap"><i class="fas fa-graduation-cap"></i></div>
+              <div>
+                <h3 class="bento-title">Active Learning &amp; Frameworks</h3>
+                <span class="bento-subtitle">triOS Curriculum &amp; Self-Directed</span>
+              </div>
+            </div>
+            <div class="bento-tags">
+              <span class="skill-badge learning">Angular 18+ (TypeScript &amp; RxJS)</span>
+              <span class="skill-badge learning">React 19 (Hooks &amp; Architecture)</span>
+              <span class="skill-badge learning">Next.js</span>
+              <span class="skill-badge learning">AI Integration APIs</span>
+            </div>
+          </div>
+
+          <!-- 5. Tools & Systems -->
+          <div class="bento-card bento-tools">
+            <div class="bento-header">
+              <div class="bento-icon-badge tools"><i class="fas fa-wrench"></i></div>
+              <div>
+                <h3 class="bento-title">Tools &amp; Workflows</h3>
+                <span class="bento-subtitle">Development Environments</span>
+              </div>
+            </div>
+            <div class="bento-tags">
+              <span class="skill-badge">Git &amp; GitHub</span>
+              <span class="skill-badge">GitHub Actions CI/CD</span>
+              <span class="skill-badge">Figma UI/UX</span>
+              <span class="skill-badge">Postman API Testing</span>
+              <span class="skill-badge">Agile / Scrum</span>
+              <span class="skill-badge">Terminal &amp; Bash</span>
+            </div>
           </div>
 
         </div>
@@ -617,90 +643,165 @@
       </div>
     </section>
 
-    <!-- ======== CONTACT ======== -->
-    <section id="contact">
-      <div class="container">
+    <!-- ========================================== -->
+    <!-- EXPERIENCE & EDUCATION -->
+    <!-- ========================================== -->
+    <section id="experience" class="section-padding">
+      <div class="content-container">
         
-        <div class="section-header">
-          <div>
-            <span class="section-subtitle">Get In Touch</span>
-            <h2 class="section-title">Let's Connect</h2>
+        <div class="section-title-wrap">
+          <div class="section-tag">Career &amp; Growth</div>
+          <h2 class="section-heading">Education &amp; Background</h2>
+          <p class="section-subheading">
+            Dedicated trajectory towards building resilient native mobile and web applications with industry-standard practices.
+          </p>
+        </div>
+
+        <div class="timeline-container">
+
+          <!-- Item 1: triOS College -->
+          <div class="timeline-card">
+            <div class="timeline-date-badge">2024 &mdash; 2027 (Expected)</div>
+            <div class="timeline-content">
+              <h3 class="timeline-role">Diploma: Mobile Web Developer Using AI</h3>
+              <h4 class="timeline-org">triOS College &middot; Toronto, ON</h4>
+              <p class="timeline-text">
+                Comprehensive practical training across native iOS development in Swift/SwiftUI, native Android applications in Kotlin/Jetpack Compose, web full-stack with PHP/MySQL, modern web frameworks (Angular &amp; React), and AI SDK integrations.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Authored multiple capstones adhering to strict architectural separation of concerns (MVVM, Repository pattern).</li>
+                <li>Built automated testing suites and CI/CD deployment routines on GitHub Actions.</li>
+              </ul>
+            </div>
           </div>
+
+          <!-- Item 2: Digital Solutions Lab Intern -->
+          <div class="timeline-card">
+            <div class="timeline-date-badge">2026</div>
+            <div class="timeline-content">
+              <h3 class="timeline-role">Software Developer Intern</h3>
+              <h4 class="timeline-org">Digital Solutions Lab &middot; Toronto, ON</h4>
+              <p class="timeline-text">
+                Collaborated in an agile scrum team of 4 engineers to deliver responsive web frontends, integrate backend REST APIs, and optimize page load performance.
+              </p>
+              <ul class="timeline-bullets">
+                <li>Participated in daily standups, sprint retrospectives, and GitHub pull request code reviews.</li>
+                <li>Identified and resolved production frontend styling defects across mobile viewports.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Item 3: Open for Co-op -->
+          <div class="timeline-card highlight-card">
+            <div class="timeline-date-badge now">Present</div>
+            <div class="timeline-content">
+              <h3 class="timeline-role">Available for Co-ops &amp; Junior Roles</h3>
+              <h4 class="timeline-org">Toronto, ON &middot; Open to Hybrid / Remote</h4>
+              <p class="timeline-text">
+                Seeking an impactful role as a <strong>Junior Mobile Developer (iOS/Android)</strong> or <strong>Junior Full-Stack Web Developer</strong> to build scalable software alongside collaborative engineering teams.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- CONTACT SECTION -->
+    <!-- ========================================== -->
+    <section id="contact" class="section-padding bg-alt">
+      <div class="content-container">
+        
+        <div class="section-title-wrap">
+          <div class="section-tag">Direct Communication</div>
+          <h2 class="section-heading">Let's Build Something Great</h2>
+          <p class="section-subheading">
+            Whether you have a co-op opportunity, a full-time opening, or want to discuss technical architecture, I'd love to hear from you.
+          </p>
         </div>
 
         <div class="contact-grid">
           
-          <div>
-            <p class="contact-info-text">
-              Whether you're looking to discuss an upcoming developer role, have questions about my projects, or just want to connect, feel free to reach out.
+          <!-- Contact Details -->
+          <div class="contact-info-panel">
+            <h3 class="panel-heading">Direct Contact</h3>
+            <p class="panel-subtext">
+              I typically respond within 24 hours. Feel free to connect via email, LinkedIn, or explore my code repositories on GitHub.
             </p>
 
-            <div class="contact-methods">
+            <div class="contact-channels">
               
-              <div class="contact-method-item">
-                <div class="contact-method-icon"><i class="fas fa-envelope"></i></div>
-                <div>
-                  <div class="contact-method-label">Email</div>
-                  <a href="mailto:Sheikh.Naim@triosstudent.com" class="contact-method-value">Sheikh.Naim@triosstudent.com</a>
+              <div class="channel-item">
+                <div class="channel-icon"><i class="fas fa-envelope"></i></div>
+                <div class="channel-details">
+                  <span class="channel-label">Email</span>
+                  <a href="mailto:Sheikh.Naim@triosstudent.com" class="channel-value">Sheikh.Naim@triosstudent.com</a>
                 </div>
               </div>
 
-              <div class="contact-method-item">
-                <div class="contact-method-icon"><i class="fas fa-location-dot"></i></div>
-                <div>
-                  <div class="contact-method-label">Location</div>
-                  <div class="contact-method-value">Toronto, ON, Canada &mdash; Open to Remote</div>
+              <div class="channel-item">
+                <div class="channel-icon"><i class="fas fa-location-dot"></i></div>
+                <div class="channel-details">
+                  <span class="channel-label">Location</span>
+                  <span class="channel-value">Toronto, ON, Canada &mdash; Open to Relocation / Remote</span>
                 </div>
               </div>
 
-              <div class="contact-method-item">
-                <div class="contact-method-icon"><i class="fas fa-clock"></i></div>
-                <div>
-                  <div class="contact-method-label">Status</div>
-                  <div class="contact-method-value" style="color: var(--accent-emerald); font-weight: 600;">
-                    🟢 Open to Opportunities
-                  </div>
+              <div class="channel-item">
+                <div class="channel-icon"><i class="fas fa-id-badge"></i></div>
+                <div class="channel-details">
+                  <span class="channel-label">Status</span>
+                  <span class="channel-value status-available">🟢 Actively Interviewing</span>
                 </div>
               </div>
 
             </div>
 
-            <div class="contact-social-links">
-              <a href="https://github.com/snaimio" target="_blank" rel="noopener" class="social-btn" title="GitHub">
+            <div class="social-links-row">
+              <a href="https://github.com/snaimio" target="_blank" rel="noopener noreferrer" class="social-box" title="GitHub">
                 <i class="fab fa-github"></i>
+                <span>GitHub</span>
               </a>
-              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener" class="social-btn" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener noreferrer" class="social-box" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
+                <span>LinkedIn</span>
               </a>
             </div>
           </div>
 
-          <!-- Functional Form -->
-          <form class="contact-form" id="contact-form">
-            <div class="form-group">
-              <label class="form-label" for="form-name">Name</label>
-              <input type="text" id="form-name" class="form-control" placeholder="Your Name" required>
-            </div>
+          <!-- Contact Form -->
+          <div class="contact-form-panel">
+            <form id="contact-form" class="modern-form" action="mailto:Sheikh.Naim@triosstudent.com" method="POST" enctype="text/plain">
+              
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="contact-name">Your Name <span class="req">*</span></label>
+                  <input type="text" id="contact-name" name="name" placeholder="Alex Morgan" required autocomplete="name">
+                </div>
 
-            <div class="form-group">
-              <label class="form-label" for="form-email">Email</label>
-              <input type="email" id="form-email" class="form-control" placeholder="your.email@example.com" required>
-            </div>
+                <div class="form-field">
+                  <label for="contact-email">Your Email <span class="req">*</span></label>
+                  <input type="email" id="contact-email" name="email" placeholder="alex@company.com" required autocomplete="email">
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label class="form-label" for="form-subject">Subject</label>
-              <input type="text" id="form-subject" class="form-control" placeholder="Project or Opportunity Discussion" required>
-            </div>
+              <div class="form-field">
+                <label for="contact-subject">Subject <span class="req">*</span></label>
+                <input type="text" id="contact-subject" name="subject" placeholder="Co-op Opportunity / Project Discussion" required>
+              </div>
 
-            <div class="form-group">
-              <label class="form-label" for="form-message">Message</label>
-              <textarea id="form-message" class="form-control" placeholder="Hello Sheikh, I'd like to discuss..." rows="4" required></textarea>
-            </div>
+              <div class="form-field">
+                <label for="contact-message">Message <span class="req">*</span></label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="Hi Sheikh, I saw your portfolio and would like to discuss..." required></textarea>
+              </div>
 
-            <button type="submit" class="btn btn-primary" style="justify-content: center; width: 100%;">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
-          </form>
+              <button type="submit" id="submit-btn" class="btn btn-primary btn-submit">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
 
         </div>
 
@@ -709,22 +810,29 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container footer-container">
-      <div class="footer-copy">
-        &copy; 2026 Sheikh Naim &middot; Toronto, Canada &middot; Built with pure HTML, CSS, and JavaScript.
+  <!-- ========================================== -->
+  <!-- FOOTER -->
+  <!-- ========================================== -->
+  <footer class="site-footer">
+    <div class="content-container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">Sheikh Naim<span>.</span></span>
+        <p class="footer-copy">
+          &copy; 2026 Sheikh Naim. Designed &amp; engineered with pure HTML5, modern CSS3, and vanilla JavaScript.
+        </p>
       </div>
 
-      <div class="footer-links">
-        <a href="#home" class="footer-link">Home</a>
-        <a href="#work" class="footer-link">Projects</a>
-        <a href="#about" class="footer-link">About</a>
-        <a href="#contact" class="footer-link">Contact</a>
+      <div class="footer-nav">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </footer>
 
+  <!-- Vanilla JavaScript -->
   <script src="js/app.js"></script>
 </body>
 </html>
