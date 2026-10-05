@@ -1,121 +1,96 @@
+/**
+ * SHEIKH NAIM — DEVELOPER PORTFOLIO
+ * Vanilla JavaScript Engine
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initFilter();
-  initScrollEffects();
-  initMobileMenu();
   initRotatingText();
-  initSmoothScroll();
+  initScrollSpy();
+  initMobileMenu();
   initContactForm();
 });
 
-// --- 1. Theme Toggle ---
+/* --- 1. Theme Switcher (OLED Dark / Minimal Light) --- */
 function initTheme() {
-  const btn = document.getElementById('theme-toggle');
+  const toggleBtn = document.getElementById('theme-toggle');
   const body = document.body;
-  const icon = btn.querySelector('i');
+  if (!toggleBtn) return;
 
-  const saved = localStorage.getItem('theme') || 'light-mode';
-  body.className = saved;
-  icon.className = saved === 'light-mode' ? 'fas fa-moon' : 'fas fa-circle-half-stroke';
+  const savedTheme = localStorage.getItem('theme') || 'dark-mode';
+  if (savedTheme === 'light-mode') {
+    body.classList.add('light-mode');
+    updateThemeIcon(true);
+  } else {
+    body.classList.remove('light-mode');
+    updateThemeIcon(false);
+  }
 
-  btn.addEventListener('click', () => {
-    const isLight = body.classList.contains('light-mode');
-    body.classList.replace(
-      isLight ? 'light-mode' : 'dark-mode',
-      isLight ? 'dark-mode' : 'light-mode'
-    );
-    icon.className = isLight ? 'fas fa-circle-half-stroke' : 'fas fa-moon';
-    localStorage.setItem('theme', isLight ? 'dark-mode' : 'light-mode');
+  toggleBtn.addEventListener('click', () => {
+    const isLight = body.classList.toggle('light-mode');
+    localStorage.setItem('theme', isLight ? 'light-mode' : 'dark-mode');
+    updateThemeIcon(isLight);
   });
+
+  function updateThemeIcon(isLight) {
+    const icon = toggleBtn.querySelector('i');
+    if (icon) {
+      icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+    }
+  }
 }
 
-// --- 2. Project Filter ---
+/* --- 2. Project Category Filtering --- */
 function initFilter() {
-  const buttons = document.querySelectorAll('.filter-btn');
-  const cards = document.querySelectorAll('.project-card');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
 
-  if (!buttons.length || !cards.length) return;
+  if (!filterBtns.length || !projectCards.length) return;
 
-  buttons.forEach(btn => {
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const filter = btn.getAttribute('data-filter');
 
-      cards.forEach(card => {
-        const match = filter === 'all' || card.getAttribute('data-category') === filter;
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const match = filter === 'all' || category === filter;
 
         if (match) {
           card.style.display = 'flex';
           requestAnimationFrame(() => {
             card.style.opacity = '1';
-            card.style.transform = '';
+            card.style.transform = 'translateY(0)';
           });
         } else {
           card.style.opacity = '0';
-          card.style.transform = 'translateY(8px)';
-          setTimeout(() => { card.style.display = 'none'; }, 280);
+          card.style.transform = 'translateY(12px)';
+          setTimeout(() => {
+            if (card.style.opacity === '0') {
+              card.style.display = 'none';
+            }
+          }, 250);
         }
       });
     });
   });
 }
 
-// --- 3. Scroll Effects ---
-function initScrollEffects() {
-  const nav = document.getElementById('navbar');
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
-
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 80);
-
-    let current = '';
-    sections.forEach(sec => {
-      if (window.scrollY >= sec.offsetTop - 160) current = sec.getAttribute('id');
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
-    });
-  }, { passive: true });
-}
-
-// --- 4. Mobile Menu ---
-function initMobileMenu() {
-  const menuBtn = document.querySelector('.mobile-menu-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
-
-  if (!menuBtn || !mobileMenu) return;
-
-  menuBtn.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('active');
-    menuBtn.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
-  });
-
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      menuBtn.querySelector('i').className = 'fas fa-bars';
-    });
-  });
-}
-
-// --- 5. Rotating Text ---
+/* --- 3. Hero Rotating Text --- */
 function initRotatingText() {
   const el = document.querySelector('.rotating-text');
   if (!el) return;
 
   const phrases = [
-    'mobile & web apps',
     'iOS apps in Swift',
     'Android apps in Kotlin',
-    'full-stack web solutions',
+    'full-stack web apps',
+    'PHP & MySQL backends',
     'modern UI/UX designs',
-    'clean, testable code',
+    'scalable clean code'
   ];
   let index = 0;
 
@@ -125,39 +100,83 @@ function initRotatingText() {
       index = (index + 1) % phrases.length;
       el.textContent = phrases[index];
       el.style.opacity = '1';
-    }, 220);
-  }, 3000);
+    }, 250);
+  }, 2800);
 }
 
-// --- 6. Smooth Scroll ---
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', e => {
-      const target = document.querySelector(anchor.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+/* --- 4. Navigation Scroll Spy & Navbar Blur --- */
+function initScrollSpy() {
+  const navbar = document.getElementById('navbar');
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+  window.addEventListener('scroll', () => {
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+
+    let currentSection = '';
+    const scrollPos = window.scrollY + 120;
+
+    sections.forEach(sec => {
+      if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+        currentSection = sec.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${currentSection}`) {
+        link.classList.add('active');
+      }
+    });
+  }, { passive: true });
+}
+
+/* --- 5. Mobile Navigation Menu --- */
+function initMobileMenu() {
+  const menuBtn = document.querySelector('.mobile-menu-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
+
+  if (!menuBtn || !mobileMenu) return;
+
+  menuBtn.addEventListener('click', () => {
+    const isActive = mobileMenu.classList.toggle('active');
+    const icon = menuBtn.querySelector('i');
+    if (icon) {
+      icon.className = isActive ? 'fas fa-xmark' : 'fas fa-bars';
+    }
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      const icon = menuBtn.querySelector('i');
+      if (icon) icon.className = 'fas fa-bars';
     });
   });
 }
 
-// --- 7. Contact Form ---
+/* --- 6. Contact Form Submission Handler --- */
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    const orig = btn.innerHTML;
+    if (!btn) return;
 
+    const originalText = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+    btn.classList.add('btn-success');
     btn.disabled = true;
 
     setTimeout(() => {
-      btn.innerHTML = orig;
+      btn.innerHTML = originalText;
+      btn.classList.remove('btn-success');
       btn.disabled = false;
       form.reset();
-    }, 3000);
+    }, 3500);
   });
 }
