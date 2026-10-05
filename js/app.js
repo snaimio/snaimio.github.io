@@ -87,26 +87,25 @@ function initProjectFiltering() {
 }
 
 /* --------------------------------------------------------------------------
-   3. 1-CLICK EMAIL COPY & TOAST NOTIFICATION
+   3. 1-CLICK COPY & TOAST NOTIFICATION
    -------------------------------------------------------------------------- */
 function initCopyEmail() {
   const copyButtons = document.querySelectorAll('.copy-email-btn');
 
   copyButtons.forEach(btn => {
     btn.addEventListener('click', async () => {
-      const email = btn.getAttribute('data-email') || 'naimbgd@gmail.com';
+      const copyVal = btn.getAttribute('data-copy') || 'https://www.linkedin.com/in/snaimio';
       try {
-        await navigator.clipboard.writeText(email);
-        showToast(`Copied ${email} to clipboard!`, 'success');
+        await navigator.clipboard.writeText(copyVal);
+        showToast(`Copied to clipboard!`, 'success');
       } catch (err) {
-        // Fallback for older browsers
         const textarea = document.createElement('textarea');
-        textarea.value = email;
+        textarea.value = copyVal;
         document.body.appendChild(textarea);
         textarea.select();
         document.execCommand('copy');
         document.body.removeChild(textarea);
-        showToast(`Copied ${email} to clipboard!`, 'success');
+        showToast(`Copied to clipboard!`, 'success');
       }
     });
   });
@@ -208,16 +207,18 @@ function initContactForm() {
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
+    e.preventDefault();
     const btn = document.getElementById('submit-btn');
     if (!btn) return;
 
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing Email...';
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
     btn.disabled = true;
 
-    showToast('Opening default email client...', 'info');
+    showToast('Message sent! Please also connect directly via LinkedIn.', 'success');
 
     setTimeout(() => {
-      btn.innerHTML = '<i class="fas fa-check"></i> Ready!';
+      btn.innerHTML = '<i class="fas fa-check"></i> Sent!';
+      form.reset();
       setTimeout(() => {
         btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
         btn.disabled = false;
