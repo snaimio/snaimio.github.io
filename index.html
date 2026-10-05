@@ -13,12 +13,12 @@
 
   <title>Sheikh Naim — Mobile & Full-Stack Developer</title>
 
-  <!-- Google Fonts -->
+  <!-- Typography: Plus Jakarta Sans + Inter + JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Stylesheet -->
@@ -26,27 +26,30 @@
 </head>
 <body>
 
-  <!-- Background Ambient Glow Canvas -->
-  <div class="glow-backdrop">
-    <div class="glow-orb orb-1"></div>
-    <div class="glow-orb orb-2"></div>
-    <div class="glow-orb orb-3"></div>
+  <!-- Background Decorative Grid & Grain -->
+  <div class="bg-grid-pattern" aria-hidden="true"></div>
+  <div class="bg-ambient-layer" aria-hidden="true">
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
   </div>
 
-  <!-- Toast Notification Container -->
+  <!-- Toast Notification Portal -->
   <div id="toast-container" class="toast-container" aria-live="polite"></div>
 
-  <!-- Header / Navigation -->
+  <!-- Navigation -->
   <header id="header" class="site-header">
     <div class="nav-container">
-      <a href="#home" class="brand-logo" aria-label="Sheikh Naim Homepage">
-        <span class="logo-text">SN</span>
-        <span class="logo-name">Sheikh Naim<span class="dot">.</span></span>
+      <a href="#home" class="brand-badge" aria-label="Sheikh Naim Homepage">
+        <span class="brand-monogram">SN</span>
+        <div class="brand-meta">
+          <span class="brand-name">Sheikh Naim</span>
+          <span class="brand-tagline">Mobile &amp; Full-Stack</span>
+        </div>
       </a>
 
       <nav class="nav-menu" id="nav-menu" aria-label="Main Navigation">
         <ul class="nav-list">
-          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#home" class="nav-link active">Overview</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -55,7 +58,7 @@
       </nav>
 
       <div class="nav-controls">
-        <button id="theme-toggle" class="control-btn" aria-label="Toggle visual theme" title="Toggle Theme">
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle visual theme" title="Toggle Light/Dark Theme">
           <i class="fas fa-sun"></i>
         </button>
         <a href="assets/Sheikh_Naim_Resume.pdf" class="btn btn-sm btn-outline nav-resume-btn" download>
@@ -70,10 +73,10 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer -->
+  <!-- Mobile Navigation Drawer -->
   <div class="mobile-drawer" id="mobile-drawer">
     <ul class="mobile-nav-list">
-      <li><a href="#home" class="mobile-nav-link">Home</a></li>
+      <li><a href="#home" class="mobile-nav-link">Overview</a></li>
       <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
       <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
       <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
@@ -89,41 +92,41 @@
   <main id="main-content">
 
     <!-- ========================================== -->
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (EDITORIAL PRODUCT DESIGN)   -->
     <!-- ========================================== -->
     <section id="home" class="hero-section">
       <div class="content-container">
         
         <div class="hero-grid">
           
-          <!-- Left Column: Bio & Core Info -->
+          <!-- Left Column: Headline & Value Proposition -->
           <div class="hero-intro">
             
             <div class="status-badge">
               <span class="status-indicator"></span>
-              <span class="status-text">Available for 2026 Co-ops &amp; Junior Roles</span>
+              <span class="status-text">Available for Summer / Fall 2026 Co-ops</span>
             </div>
 
             <h1 class="hero-headline">
-              Crafting Native Mobile <br>
-              <span class="text-gradient">&amp; Full-Stack Systems.</span>
+              Crafting native mobile apps <br>
+              <span class="headline-gradient">&amp; full-stack systems.</span>
             </h1>
 
             <p class="hero-subtext">
-              I'm <strong>Sheikh Naim</strong>, a developer based in <strong>Toronto, Canada</strong>. Currently advancing in the <em>Mobile Web Developer Using AI</em> program at triOS College, specializing in native <strong>iOS (Swift/SwiftUI)</strong>, <strong>Android (Kotlin/Jetpack Compose)</strong>, and robust <strong>full-stack web engineering</strong>.
+              I'm <strong>Sheikh Naim</strong>, a mobile and full-stack software developer based in <strong>Toronto, Canada</strong>. Currently studying in the <em>Mobile Web Developer Using AI</em> program at triOS College, specializing in native <strong>iOS (Swift/SwiftUI)</strong>, <strong>Android (Kotlin/Jetpack Compose)</strong>, and scalable <strong>web architectures</strong>.
             </p>
 
             <div class="hero-actions">
               <a href="#projects" class="btn btn-primary">
-                <i class="fas fa-shapes"></i> View Case Studies
+                <i class="fas fa-arrow-down"></i> Explore Projects
               </a>
               <button class="btn btn-secondary copy-email-btn" data-email="Sheikh.Naim@triosstudent.com">
                 <i class="fas fa-copy"></i> Copy Email
               </button>
-              <a href="https://github.com/snaimio" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Profile">
+              <a href="https://github.com/snaimio" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Profile" title="GitHub">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="LinkedIn Profile">
+              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="LinkedIn Profile" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -131,7 +134,7 @@
             <div class="hero-metrics">
               <div class="metric-card">
                 <span class="metric-number">7+</span>
-                <span class="metric-label">Completed Projects</span>
+                <span class="metric-label">Completed Systems</span>
               </div>
               <div class="metric-divider"></div>
               <div class="metric-card">
@@ -141,53 +144,63 @@
               <div class="metric-divider"></div>
               <div class="metric-card">
                 <span class="metric-number">100%</span>
-                <span class="metric-label">Clean Code &amp; MVVM</span>
+                <span class="metric-label">Clean MVVM / UDF</span>
               </div>
             </div>
 
           </div>
 
-          <!-- Right Column: Interactive Code & Stack Preview -->
+          <!-- Right Column: Curated Discipline & Architecture Showcase -->
           <div class="hero-showcase">
-            <div class="terminal-card">
+            <div class="showcase-card">
               
-              <div class="terminal-header">
-                <div class="terminal-dots">
-                  <span class="dot-red"></span>
-                  <span class="dot-yellow"></span>
-                  <span class="dot-green"></span>
+              <div class="showcase-header">
+                <div class="showcase-title-row">
+                  <span class="showcase-badge">Core Disciplines</span>
+                  <span class="showcase-location"><i class="fas fa-location-dot"></i> Toronto, ON</span>
                 </div>
-                <div class="terminal-title">
-                  <i class="fas fa-code"></i> SheikhNaim.swift
-                </div>
-                <div class="terminal-badge">Swift 6 · Native</div>
               </div>
 
-              <div class="terminal-body">
-                <pre class="code-block"><code><span class="c-keyword">import</span> <span class="c-type">SwiftUI</span>
-<span class="c-keyword">import</span> <span class="c-type">SwiftData</span>
+              <div class="discipline-list">
+                
+                <div class="discipline-item">
+                  <div class="discipline-icon ios"><i class="fab fa-apple"></i></div>
+                  <div class="discipline-info">
+                    <div class="discipline-title">iOS Native Development</div>
+                    <div class="discipline-desc">Swift 6, SwiftUI, SwiftData on-device persistence, WidgetKit, Swift Charts</div>
+                  </div>
+                </div>
 
-<span class="c-keyword">struct</span> <span class="c-type">DeveloperProfile</span> {
-    <span class="c-keyword">let</span> name: <span class="c-type">String</span> = <span class="c-string">"Sheikh Naim"</span>
-    <span class="c-keyword">let</span> location: <span class="c-type">String</span> = <span class="c-string">"Toronto, ON, CA"</span>
-    <span class="c-keyword">let</span> focus: [<span class="c-type">Platform</span>] = [.iOS, .android, .web]
-    
-    <span class="c-keyword">var</span> coreStrengths: [<span class="c-type">String</span>] {
-        [
-            <span class="c-string">"SwiftUI &amp; SwiftData Persistence"</span>,
-            <span class="c-string">"Jetpack Compose &amp; Room DB"</span>,
-            <span class="c-string">"Clean MVVM &amp; Unidirectional Flow"</span>,
-            <span class="c-string">"PHP 8, MySQL &amp; RESTful APIs"</span>
-        ]
-    }
-}</code></pre>
+                <div class="discipline-item">
+                  <div class="discipline-icon android"><i class="fab fa-android"></i></div>
+                  <div class="discipline-info">
+                    <div class="discipline-title">Android Native Development</div>
+                    <div class="discipline-desc">Kotlin 2.0, Jetpack Compose, Room DB, Dagger Hilt, Coroutines &amp; StateFlow</div>
+                  </div>
+                </div>
+
+                <div class="discipline-item">
+                  <div class="discipline-icon web"><i class="fas fa-server"></i></div>
+                  <div class="discipline-info">
+                    <div class="discipline-title">Full-Stack Web &amp; APIs</div>
+                    <div class="discipline-desc">Modern JavaScript (ES6+), PHP 8, MySQL relational schemas, RESTful APIs</div>
+                  </div>
+                </div>
+
+                <div class="discipline-item">
+                  <div class="discipline-icon learning"><i class="fas fa-layer-group"></i></div>
+                  <div class="discipline-info">
+                    <div class="discipline-title">Modern Frameworks &amp; Roadmap</div>
+                    <div class="discipline-desc">Angular 18+ (TypeScript &amp; RxJS), React 19 component architecture</div>
+                  </div>
+                </div>
+
               </div>
 
-              <div class="terminal-footer">
-                <div class="stack-tag-row">
-                  <span class="stack-pill pill-ios"><i class="fab fa-apple"></i> iOS 18</span>
-                  <span class="stack-pill pill-android"><i class="fab fa-android"></i> Android Compose</span>
-                  <span class="stack-pill pill-web"><i class="fas fa-server"></i> REST APIs</span>
+              <div class="showcase-footer">
+                <div class="showcase-status">
+                  <span class="dot-live"></span>
+                  <span>Building modern, user-centered software</span>
                 </div>
               </div>
 
@@ -200,14 +213,14 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- FEATURED PROJECTS / CASE STUDIES -->
+    <!-- FEATURED PROJECTS / CASE STUDIES           -->
     <!-- ========================================== -->
     <section id="projects" class="section-padding">
       <div class="content-container">
         
         <div class="section-title-wrap">
-          <div class="section-tag">Engineered Solutions</div>
-          <h2 class="section-heading">Featured Projects &amp; Case Studies</h2>
+          <div class="section-tag">Featured Work</div>
+          <h2 class="section-heading">Projects &amp; Case Studies</h2>
           <p class="section-subheading">
             Production-quality applications built with strict adherence to platform architectural patterns, clean state management, and modern UI paradigms.
           </p>
@@ -215,7 +228,7 @@
 
         <!-- Filter Controls -->
         <div class="filter-bar">
-          <button class="filter-tab active" data-filter="all">All Systems (6)</button>
+          <button class="filter-tab active" data-filter="all">All Projects (6)</button>
           <button class="filter-tab" data-filter="mobile">Native Mobile</button>
           <button class="filter-tab" data-filter="web">Full-Stack Web</button>
           <button class="filter-tab" data-filter="design">UI/UX Design Systems</button>
@@ -224,16 +237,16 @@
         <div class="projects-layout">
 
           <!-- ========================================== -->
-          <!-- FLAGSHIP 1: SPENDORA (iOS CAPSTONE) -->
+          <!-- FLAGSHIP 1: SPENDORA (iOS CAPSTONE)       -->
           <!-- ========================================== -->
-          <article class="project-flagship ios-theme" data-category="mobile">
+          <article class="project-flagship" data-category="mobile">
             <div class="flagship-visual">
               <div class="device-mockup-wrap">
-                <div class="phone-frame">
-                  <div class="phone-notch"></div>
+                <div class="phone-frame ios-frame">
+                  <div class="phone-island"></div>
                   <img src="assets/images/spendora.png" alt="Spendora iOS App Interface" class="phone-screen" loading="lazy">
                 </div>
-                <div class="mockup-ambient-glow glow-ios"></div>
+                <div class="ambient-backlight backlight-ios"></div>
               </div>
             </div>
 
@@ -276,7 +289,7 @@
                 <span class="tech-chip">SwiftData</span>
                 <span class="tech-chip">WidgetKit</span>
                 <span class="tech-chip">Swift Charts</span>
-                <span class="tech-chip">MVVM</span>
+                <span class="tech-chip">Clean MVVM</span>
               </div>
 
               <div class="flagship-actions">
@@ -288,16 +301,16 @@
           </article>
 
           <!-- ========================================== -->
-          <!-- FLAGSHIP 2: LIFESCORE (ANDROID NATIVE) -->
+          <!-- FLAGSHIP 2: LIFESCORE (ANDROID NATIVE)    -->
           <!-- ========================================== -->
-          <article class="project-flagship android-theme" data-category="mobile">
+          <article class="project-flagship" data-category="mobile">
             <div class="flagship-visual">
               <div class="device-mockup-wrap">
                 <div class="phone-frame android-frame">
-                  <div class="android-camera"></div>
+                  <div class="phone-camera-dot"></div>
                   <img src="assets/images/lifescore.png" alt="LifeScore Android App Interface" class="phone-screen" loading="lazy">
                 </div>
-                <div class="mockup-ambient-glow glow-android"></div>
+                <div class="ambient-backlight backlight-android"></div>
               </div>
             </div>
 
@@ -352,18 +365,18 @@
           </article>
 
           <!-- ========================================== -->
-          <!-- SECONDARY GRID: WEB & DESIGN PROJECTS -->
+          <!-- SECONDARY GRID: WEB & DESIGN PROJECTS     -->
           <!-- ========================================== -->
           <div class="projects-subgrid">
 
             <!-- Card 3: MovieMoodMatcher -->
-            <article class="project-card web-theme" data-category="web">
+            <article class="project-card" data-category="web">
               <div class="browser-mockup">
                 <div class="browser-bar">
                   <div class="window-dots">
                     <span></span><span></span><span></span>
                   </div>
-                  <div class="browser-address">api.themoviedb.org/3/discover</div>
+                  <div class="browser-address">MovieMoodMatcher &middot; REST API</div>
                 </div>
                 <div class="browser-viewport">
                   <img src="assets/images/moviefinder.png" alt="MovieMoodMatcher Application Preview" loading="lazy">
@@ -397,7 +410,7 @@
             </article>
 
             <!-- Card 4: TechStore E-Commerce -->
-            <article class="project-card web-theme" data-category="web">
+            <article class="project-card" data-category="web">
               <div class="browser-mockup">
                 <div class="browser-bar">
                   <div class="window-dots">
@@ -437,7 +450,7 @@
             </article>
 
             <!-- Card 5: GreenThumb UI/UX Design System -->
-            <article class="project-card design-theme" data-category="design">
+            <article class="project-card" data-category="design">
               <div class="browser-mockup">
                 <div class="browser-bar">
                   <div class="window-dots">
@@ -477,7 +490,7 @@
             </article>
 
             <!-- Card 6: Scooterama Urban Mobility -->
-            <article class="project-card web-theme" data-category="web">
+            <article class="project-card" data-category="web">
               <div class="browser-mockup">
                 <div class="browser-bar">
                   <div class="window-dots">
@@ -524,14 +537,14 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- TECHNICAL SKILLS & ARSENAL -->
+    <!-- TECHNICAL SKILLS & ARSENAL                 -->
     <!-- ========================================== -->
     <section id="skills" class="section-padding bg-alt">
       <div class="content-container">
         
         <div class="section-title-wrap">
-          <div class="section-tag">Engineering Stack</div>
-          <h2 class="section-heading">Technical Arsenal &amp; Capabilities</h2>
+          <div class="section-tag">Capabilities</div>
+          <h2 class="section-heading">Technical Arsenal &amp; Stack</h2>
           <p class="section-subheading">
             Proficiencies across native mobile ecosystems, full-stack web architectures, databases, and agile software development workflows.
           </p>
@@ -555,7 +568,7 @@
               <span class="skill-badge">WidgetKit</span>
               <span class="skill-badge">Swift Charts</span>
               <span class="skill-badge">UserNotifications</span>
-              <span class="skill-badge">MVVM Architecture</span>
+              <span class="skill-badge">Clean MVVM</span>
               <span class="skill-badge">Xcode Tools</span>
             </div>
           </div>
@@ -644,7 +657,7 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- EXPERIENCE & EDUCATION -->
+    <!-- EXPERIENCE & EDUCATION                     -->
     <!-- ========================================== -->
     <section id="experience" class="section-padding">
       <div class="content-container">
@@ -709,14 +722,14 @@
     </section>
 
     <!-- ========================================== -->
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION                            -->
     <!-- ========================================== -->
     <section id="contact" class="section-padding bg-alt">
       <div class="content-container">
         
         <div class="section-title-wrap">
-          <div class="section-tag">Direct Communication</div>
-          <h2 class="section-heading">Let's Build Something Great</h2>
+          <div class="section-tag">Get In Touch</div>
+          <h2 class="section-heading">Let's Connect &amp; Collaborate</h2>
           <p class="section-subheading">
             Whether you have a co-op opportunity, a full-time opening, or want to discuss technical architecture, I'd love to hear from you.
           </p>
@@ -726,9 +739,9 @@
           
           <!-- Contact Details -->
           <div class="contact-info-panel">
-            <h3 class="panel-heading">Direct Contact</h3>
+            <h3 class="panel-heading">Direct Inquiries</h3>
             <p class="panel-subtext">
-              I typically respond within 24 hours. Feel free to connect via email, LinkedIn, or explore my code repositories on GitHub.
+              I typically respond within 24 hours. Feel free to reach out via email, LinkedIn, or explore my code repositories on GitHub.
             </p>
 
             <div class="contact-channels">
@@ -811,7 +824,7 @@
   </main>
 
   <!-- ========================================== -->
-  <!-- FOOTER -->
+  <!-- FOOTER                                     -->
   <!-- ========================================== -->
   <footer class="site-footer">
     <div class="content-container footer-inner">
@@ -823,7 +836,7 @@
       </div>
 
       <div class="footer-nav">
-        <a href="#home">Home</a>
+        <a href="#home">Overview</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
