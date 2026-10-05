@@ -60,7 +60,7 @@ function initFilter() {
         const match = filter === 'all' || category === filter;
 
         if (match) {
-          card.style.display = 'flex';
+          card.style.display = '';
           requestAnimationFrame(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
