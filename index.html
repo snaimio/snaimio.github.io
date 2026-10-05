@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Stylesheet with Cache Busting -->
-  <link rel="stylesheet" href="css/app.css?v=20261004_v6">
+  <link rel="stylesheet" href="css/app.css?v=20261005_v1">
 </head>
 <body>
 
@@ -125,13 +125,13 @@
               <a href="#projects" class="btn btn-primary">
                 <i class="fas fa-arrow-down"></i> Explore Projects
               </a>
-              <button class="btn btn-secondary copy-email-btn" data-email="Sheikh.Naim@triosstudent.com">
+              <button class="btn btn-secondary copy-email-btn" data-email="naimbgd@gmail.com">
                 <i class="fas fa-copy"></i> Copy Email
               </button>
               <a href="https://github.com/snaimio" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="GitHub Profile" title="GitHub">
                 <i class="fab fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="LinkedIn Profile" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/snaimio" target="_blank" rel="noopener noreferrer" class="btn-icon" aria-label="LinkedIn Profile" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -233,7 +233,7 @@
 
         <!-- Filter Controls -->
         <div class="filter-bar">
-          <button class="filter-tab active" data-filter="all">All Projects (6)</button>
+          <button class="filter-tab active" data-filter="all">All Projects (8)</button>
           <button class="filter-tab" data-filter="mobile">Native Mobile</button>
           <button class="filter-tab" data-filter="web">Full-Stack Web</button>
           <button class="filter-tab" data-filter="design">UI/UX Design Systems</button>
@@ -261,10 +261,10 @@
                 <span class="project-year">2026</span>
               </div>
 
-              <h3 class="flagship-title">Spendora — Intelligent Subscription &amp; Expense Engine</h3>
+              <h3 class="flagship-title">Spendora — Privacy-First iOS Subscription Tracker</h3>
               
               <p class="flagship-description">
-                A privacy-centric personal financial intelligence and recurring expense tracker for iOS 18. Built completely on-device without telemetry or third-party tracking, featuring instant 1-tap logging, interactive widgets, and historical spending analytics.
+                A privacy-focused subscription management and recurring expense intelligence app for iOS 18+. Built completely on-device without telemetry or cloud sync, featuring 1-tap logging, interactive widgets, and historical spending analytics.
               </p>
 
               <div class="feature-spec-list">
@@ -277,13 +277,13 @@
                 <div class="spec-item">
                   <div class="spec-icon"><i class="fas fa-layer-group"></i></div>
                   <div class="spec-text">
-                    <strong>WidgetKit &amp; Dynamic Timelines:</strong> Live Home and Lock Screen widgets for remaining budget awareness.
+                    <strong>WidgetKit &amp; Dynamic Timelines:</strong> Live Home and Lock Screen widgets for upcoming billing dates and monthly spend totals.
                   </div>
                 </div>
                 <div class="spec-item">
                   <div class="spec-icon"><i class="fas fa-chart-line"></i></div>
                   <div class="spec-text">
-                    <strong>Swift Charts Visualization:</strong> Interactive categorical breakdowns, projections, and CSV/PDF reports.
+                    <strong>Swift Charts Visualization:</strong> Interactive category spending distributions, annual forecasts, and CSV/PDF export.
                   </div>
                 </div>
               </div>
@@ -294,6 +294,7 @@
                 <span class="tech-chip">SwiftData</span>
                 <span class="tech-chip">WidgetKit</span>
                 <span class="tech-chip">Swift Charts</span>
+                <span class="tech-chip">UserNotifications</span>
                 <span class="tech-chip">Clean MVVM</span>
               </div>
 
@@ -306,63 +307,69 @@
           </article>
 
           <!-- ========================================== -->
-          <!-- FLAGSHIP 2: LIFESCORE (ANDROID NATIVE)    -->
+          <!-- FLAGSHIP 2: MAPLE (FULL-STACK CAPSTONE)   -->
           <!-- ========================================== -->
-          <article class="project-flagship" data-category="mobile">
+          <article class="project-flagship" data-category="web">
             <div class="flagship-visual">
               <div class="device-mockup-wrap">
-                <div class="phone-frame android-frame">
-                  <div class="phone-camera-dot"></div>
-                  <img src="assets/images/lifescore.png" alt="LifeScore Android App Interface" class="phone-screen" loading="lazy">
+                <div class="browser-mockup" style="width: 320px; box-shadow: var(--shadow-device);">
+                  <div class="browser-bar">
+                    <div class="window-dots"><span></span><span></span><span></span></div>
+                    <div class="browser-address">maple.snaimio.dev/dashboard</div>
+                  </div>
+                  <div class="browser-viewport">
+                    <img src="assets/images/finance-tracker.png" alt="Maple Family Chore and Rewards Interface" class="phone-screen" style="height:320px; object-fit:cover;" loading="lazy">
+                  </div>
                 </div>
-                <div class="ambient-backlight backlight-android"></div>
+                <div class="ambient-backlight backlight-android" style="background: rgba(0, 240, 255, 0.25);"></div>
               </div>
             </div>
 
             <div class="flagship-content">
               <div class="project-meta-row">
-                <span class="project-pill pill-android"><i class="fab fa-android"></i> Android Native</span>
-                <span class="project-year">2026</span>
+                <span class="project-pill pill-web"><i class="fas fa-server"></i> Full-Stack Capstone (In Progress)</span>
+                <span class="project-year">2026 — Present</span>
               </div>
 
-              <h3 class="flagship-title">LifeScore — Holistic Habit &amp; Wellness Tracker</h3>
+              <h3 class="flagship-title">Maple — Family Chore &amp; Rewards Platform</h3>
               
               <p class="flagship-description">
-                A native Android wellness system engineered to balance 8 life dimensions. Built according to Google's official Modern Android Architecture using Unidirectional Data Flow (UDF), Jetpack Compose, and offline-first Room persistence.
+                A multi-tenant family chore management and allowance rewards web system engineered with PHP 8, MySQL, and modern frontend architecture. Features role-based access control (Parent/Child), automated reward workflows, and an immutable points ledger.
               </p>
 
               <div class="feature-spec-list">
                 <div class="spec-item">
-                  <div class="spec-icon"><i class="fas fa-cubes"></i></div>
-                  <div class="spec-text">
-                    <strong>Modern Jetpack Compose:</strong> 100% declarative UI with fluid state-driven transitions and Material 3 design.
-                  </div>
-                </div>
-                <div class="spec-item">
                   <div class="spec-icon"><i class="fas fa-database"></i></div>
                   <div class="spec-text">
-                    <strong>Offline-First Room DB:</strong> Reactive SQLite queries streaming live changes via Kotlin StateFlow &amp; Coroutines.
+                    <strong>Relational Schema &amp; RBAC:</strong> Normalized MySQL schemas with transactional integrity, foreign key cascades, and parent/child permission boundaries.
                   </div>
                 </div>
                 <div class="spec-item">
-                  <div class="spec-icon"><i class="fas fa-network-wired"></i></div>
+                  <div class="spec-icon"><i class="fas fa-code"></i></div>
                   <div class="spec-text">
-                    <strong>Dagger Hilt Dependency Injection:</strong> Decoupled repository patterns with testable ViewModel layers.
+                    <strong>RESTful API Architecture:</strong> Clean endpoints for task assignment, chore lifecycle (pending/approved/rewarded), and household leaderboard analytics.
+                  </div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-icon"><i class="fas fa-lock"></i></div>
+                  <div class="spec-text">
+                    <strong>Append-Only Ledger &amp; Security:</strong> Balances computed dynamically from transaction history; protected via PHP sessions, bcrypt password hashing, and CSRF tokens.
                   </div>
                 </div>
               </div>
 
               <div class="tech-chip-group">
-                <span class="tech-chip">Kotlin 2.0</span>
-                <span class="tech-chip">Jetpack Compose</span>
-                <span class="tech-chip">Room DB</span>
-                <span class="tech-chip">Dagger Hilt</span>
-                <span class="tech-chip">Coroutines</span>
-                <span class="tech-chip">StateFlow</span>
+                <span class="tech-chip">PHP 8</span>
+                <span class="tech-chip">MySQL</span>
+                <span class="tech-chip">REST API Design</span>
+                <span class="tech-chip">RBAC</span>
+                <span class="tech-chip">PHP Sessions</span>
+                <span class="tech-chip">JavaScript</span>
+                <span class="tech-chip">Angular</span>
               </div>
 
               <div class="flagship-actions">
-                <a href="https://github.com/snaimio/lifescore-android-app" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                <a href="https://github.com/snaimio/maple" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
                   <i class="fab fa-github"></i> Repository &amp; Source Code
                 </a>
               </div>
@@ -370,9 +377,92 @@
           </article>
 
           <!-- ========================================== -->
-          <!-- SECONDARY GRID: WEB & DESIGN PROJECTS     -->
+          <!-- SECONDARY GRID: NATIVE ANDROID, WEB & UI   -->
           <!-- ========================================== -->
           <div class="projects-subgrid">
+
+            <!-- Card 1: Sensor ToolBox -->
+            <article class="project-card" data-category="mobile">
+              <div class="browser-mockup">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-address">Sensor ToolBox &middot; Android SDK</div>
+                </div>
+                <div class="browser-viewport">
+                  <img src="assets/images/campus-nav.png" alt="Sensor ToolBox Preview" loading="lazy">
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="project-pill pill-android"><i class="fab fa-android"></i> Native Android Suite</span>
+                  <span class="card-date">Aug 2026</span>
+                </div>
+                
+                <h4 class="card-heading">Sensor ToolBox — Android Sensor &amp; Navigation Suite</h4>
+                <p class="card-summary">
+                  Hardware telemetry suite utilizing device sensors (accelerometer, gyroscope, magnetometer, barometer, GPS/GNSS) via SensorManager and Google Play Services. Implements sensor fusion compass heading, osmdroid live breadcrumbs, and live telemetry charts.
+                </p>
+
+                <div class="tech-chip-group">
+                  <span class="tech-chip">Kotlin</span>
+                  <span class="tech-chip">SensorManager</span>
+                  <span class="tech-chip">Play Services Location</span>
+                  <span class="tech-chip">osmdroid</span>
+                  <span class="tech-chip">Material Design 3</span>
+                </div>
+
+                <div class="card-footer-action">
+                  <a href="https://github.com/snaimio/sensor-toolbox" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    <span>View Repository</span> <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2: SuperPodcast -->
+            <article class="project-card" data-category="mobile">
+              <div class="browser-mockup">
+                <div class="browser-bar">
+                  <div class="window-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-address">SuperPodcast &middot; ExoPlayer</div>
+                </div>
+                <div class="browser-viewport">
+                  <img src="assets/images/lifescore.png" alt="SuperPodcast Streaming App Preview" loading="lazy">
+                </div>
+              </div>
+
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="project-pill pill-android"><i class="fab fa-android"></i> Android Podcast Streaming</span>
+                  <span class="card-date">Sep – Oct 2026</span>
+                </div>
+                
+                <h4 class="card-heading">SuperPodcast — Streaming &amp; Discovery App</h4>
+                <p class="card-summary">
+                  Native podcast discovery and streaming player consuming iTunes Search API and custom RSS feeds. Features background audio playback with Media3 ExoPlayer, offline-first Room persistence, and background sync via WorkManager.
+                </p>
+
+                <div class="tech-chip-group">
+                  <span class="tech-chip">Kotlin</span>
+                  <span class="tech-chip">Retrofit</span>
+                  <span class="tech-chip">Room DB</span>
+                  <span class="tech-chip">Media3 ExoPlayer</span>
+                  <span class="tech-chip">WorkManager</span>
+                  <span class="tech-chip">Coroutines</span>
+                </div>
+
+                <div class="card-footer-action">
+                  <a href="https://github.com/snaimio/superpodcast" target="_blank" rel="noopener noreferrer" class="link-btn">
+                    <span>View Repository</span> <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </article>
 
             <!-- Card 3: MovieMoodMatcher -->
             <article class="project-card" data-category="web">
@@ -394,7 +484,7 @@
                   <span class="card-date">2026</span>
                 </div>
                 
-                <h4 class="card-heading">MovieMoodMatcher</h4>
+                <h4 class="card-heading">MovieMoodMatcher — Discovery Engine</h4>
                 <p class="card-summary">
                   Mood-based movie recommendation engine utilizing TMDB RESTful endpoints. Engineered with debounced live search, dynamic mood-to-genre algorithms, asynchronous pagination, and responsive modal viewports.
                 </p>
@@ -755,7 +845,7 @@
                 <div class="channel-icon"><i class="fas fa-envelope"></i></div>
                 <div class="channel-details">
                   <span class="channel-label">Email</span>
-                  <a href="mailto:Sheikh.Naim@triosstudent.com" class="channel-value">Sheikh.Naim@triosstudent.com</a>
+                  <a href="mailto:naimbgd@gmail.com" class="channel-value">naimbgd@gmail.com</a>
                 </div>
               </div>
 
@@ -782,7 +872,7 @@
                 <i class="fab fa-github"></i>
                 <span>GitHub</span>
               </a>
-              <a href="https://www.linkedin.com/in/sheikh-naim-704655384/" target="_blank" rel="noopener noreferrer" class="social-box" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/snaimio" target="_blank" rel="noopener noreferrer" class="social-box" title="LinkedIn">
                 <i class="fab fa-linkedin-in"></i>
                 <span>LinkedIn</span>
               </a>
@@ -791,7 +881,7 @@
 
           <!-- Contact Form -->
           <div class="contact-form-panel">
-            <form id="contact-form" class="modern-form" action="mailto:Sheikh.Naim@triosstudent.com" method="POST" enctype="text/plain">
+            <form id="contact-form" class="modern-form" action="mailto:naimbgd@gmail.com" method="POST" enctype="text/plain">
               
               <div class="form-row">
                 <div class="form-field">
@@ -851,6 +941,6 @@
   </footer>
 
   <!-- Vanilla JavaScript with Cache Busting -->
-  <script src="js/app.js?v=20261004_vibrant_v3"></script>
+  <script src="js/app.js?v=20261005_v1"></script>
 </body>
 </html>

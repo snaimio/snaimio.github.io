@@ -94,7 +94,7 @@ function initCopyEmail() {
 
   copyButtons.forEach(btn => {
     btn.addEventListener('click', async () => {
-      const email = btn.getAttribute('data-email') || 'Sheikh.Naim@triosstudent.com';
+      const email = btn.getAttribute('data-email') || 'naimbgd@gmail.com';
       try {
         await navigator.clipboard.writeText(email);
         showToast(`Copied ${email} to clipboard!`, 'success');
